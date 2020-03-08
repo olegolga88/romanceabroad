@@ -16,5 +16,13 @@ public class Locators {
 
     //Search Page
     public static final By LINK_SEARCH= By.xpath("//a[@href='https://romanceabroad.com/users/search']");
+    public static final By DROP_DOWN_LIST_SORT_BY= By.xpath("//div[@class='form-inline']//select");
+    public static final By DROP_DOWN_LIST_MIN_AGE= By.xpath("//select[@id='age_min']");
+    public static final By DROP_DOWN_LIST_MAX_AGE= By.xpath("//select[@id='age_max']");
+
+    //Main Page
+    public static final By VIDEO_FIELD= By.xpath("//iframe[@src='https://www.youtube.com/embed/RRECuJzm3IY?start=85']");
+    public static final By VIDEO_BUTTON= By.xpath("//button[@class='ytp-large-play-button ytp-button']");
+
 
 }
