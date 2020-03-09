@@ -12,6 +12,15 @@ public class Locators {
     public static final By BUTTON_NEXT=  By.xpath("//button[@data-action='next-page'][text()='Next']");
     public static final By TEXT_FIELD_NICKNAME= By.cssSelector("#nickname");
     public static final By TEXT_FIELD_PHONE= By.cssSelector("input[name='data[phone]']");
+    public static final By BUTTON_DAY_BIRTH_DATE_FIELD = By.cssSelector("#daySelect");
+    public static final By DROP_DOWN_LIST_SELECT_DAY = By.xpath("//li[@data-handler='selectDay']//a[text()='2']");
+    public static final By BUTTON_MONTH_BIRTH_DATE_FIELD =By.cssSelector("#monthSelect");
+    public static final By DROP_DOWN_LIST_SELECT_MONTH = By.xpath("//li[@data-handler='selectMonth']//a[text()='May']");
+    public static final By BUTTON_YEAR_BIRTH_DATE_FIELD = By.cssSelector("#yearSelect");
+    public static final By DROP_DOWN_LIST_SELECT_YEAR = By.xpath("//li[@data-handler='selectYear']//a[text()='2001']");
+
+
+
 
 
     //Search Page

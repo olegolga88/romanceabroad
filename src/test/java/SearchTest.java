@@ -1,14 +1,14 @@
-import org.openqa.selenium.By;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Select;
+
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import org.xml.sax.Locator;
 
-import java.util.concurrent.TimeUnit;
+
+
 
 public class SearchTest extends BaseUI{
     String currentUrlSearch;
+    BaseActions baseActions=new BaseActions(driver,wait);
+
 
 
 
@@ -31,16 +31,13 @@ public class SearchTest extends BaseUI{
         select.selectByVisibleText("Views");*/
 
 
-                getDropDownListByIndex(Locators.DROP_DOWN_LIST_SORT_BY,3);
-                getDropDownListByIndex(Locators.DROP_DOWN_LIST_MIN_AGE,0);
-                getDropDownListByIndex(Locators.DROP_DOWN_LIST_MAX_AGE,10);
+                searchPage.getDropDownListByValue(Locators.DROP_DOWN_LIST_SORT_BY,"name");
+                searchPage.getDropDownListByIndex(Locators.DROP_DOWN_LIST_MIN_AGE,0);
+                searchPage.getDropDownListByIndex(Locators.DROP_DOWN_LIST_MAX_AGE,10);
     }
 
-    public void getDropDownListByIndex(By locator,int index) {
-        Select select = new Select(driver.findElement(locator));
-        select.selectByIndex(index);
 
     }
-    }
+
 
 
