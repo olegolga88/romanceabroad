@@ -1,4 +1,3 @@
-import org.apache.commons.lang3.RandomStringUtils;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -33,3 +32,54 @@ public class BaseUI {
 
 
 }
+// String currentUrlStore;
+//    String currentUrlContent;
+//    String currentUrlBlog;
+//    String currentUrlBookNow;
+//String expectedUrlStore = "https://romanceabroad.com/store/category-sweets";
+//    String expectedUrlContent = "https://romanceabroad.com/content/view/how-it-works";
+//    String expectedUrlBlog = "https://romanceabroad.com/content/view/blog";
+//    String expectedUrlBookNow ="https://romanceabroad.com/store/sweets/20-tour_to_ukraine";
+// By Link_Store = By.xpath("//a[@href =  'https://romanceabroad.com/store/category-sweets']");
+//    By Link_Content =
+//    By Link_Blog =
+//    By Link_Book_Now = By.xpath("//a[contains(text(),'BOOK NOW')]");
+//    By Link_Request_Tur_Info = By.xpath("//a[@href='https://romanceabroad.com/REQUEST_TOUR_INFO+Application_Form.doc']");
+//int indexLinkSignIn=0;
+//int indexLinkRequestTurInfo=0;
+
+
+
+
+//@Test
+//    public void testStorePage(){
+//        driver.findElement(Link_Store).click();
+//        driver.getCurrentUrl();
+//        currentUrlStore = driver.getCurrentUrl();
+//        System.out.println(currentUrlStore);
+//        Assert.assertEquals(currentUrlStore, expectedUrlStore);
+//}
+//@Test
+//public void testContentPage(){
+//        driver.findElement(Link_Content).click();
+//    driver.getCurrentUrl();
+//    currentUrlContent = driver.getCurrentUrl();
+//    System.out.println(currentUrlContent);
+//    Assert.assertEquals(currentUrlContent, expectedUrlContent);
+//}
+//
+//@Test
+//public void testBlogPage(){
+//        driver.findElement(Link_Blog).click();
+//    driver.getCurrentUrl();
+//    currentUrlBlog = driver.getCurrentUrl();
+//    System.out.println(currentUrlBlog);
+//    Assert.assertEquals(currentUrlBlog, expectedUrlBlog);
+//}
+//@Test
+//public void testBookNow(){
+//    driver.findElement(Link_Book_Now).click();
+//    driver.getCurrentUrl();
+//    currentUrlBookNow = driver.getCurrentUrl();
+//    System.out.println(currentUrlBookNow);
+//    Assert.assertEquals(currentUrlBookNow, expectedUrlBookNow);

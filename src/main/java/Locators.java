@@ -34,4 +34,21 @@ public class Locators {
     public static final By VIDEO_BUTTON= By.xpath("//button[@class='ytp-large-play-button ytp-button']");
 
 
+    //StorePage
+    public static final By LINK_STORE = By.xpath("//a[@href =  'https://romanceabroad.com/store/category-sweets']");
+
+
+
+    //ContentPage HowItWorks
+    public  static final By LINK_CONTENT= By.xpath("//a[@href='https://romanceabroad.com/content/view/how-it-works']");
+
+
+    // BlogPage
+    public  static final By LINK_BLOG = By.xpath("//a[@href='https://romanceabroad.com/content/view/blog']");
+
+//BookTourTests
+
+    public  static final By LINK_BOOK_NOW=By.xpath("//a[@href='https://romanceabroad.com/REQUEST_TOUR_INFO+Application_Form.doc']");
+
+
 }

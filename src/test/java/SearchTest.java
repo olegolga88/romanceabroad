@@ -7,7 +7,7 @@ import org.testng.annotations.Test;
 
 public class SearchTest extends BaseUI{
     String currentUrlSearch;
-    BaseActions baseActions=new BaseActions(driver,wait);
+
 
 
 

@@ -1,9 +1,7 @@
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
 
 public class MainPageTests extends BaseUI {
-    BaseActions baseActions=new BaseActions(driver,wait);
 
     @Test
     public void test() throws InterruptedException{
