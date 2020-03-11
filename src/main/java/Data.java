@@ -4,7 +4,9 @@ public class Data {
     public static final String password = "338377377m";
     public static final String nickname = "paul444";
     public static final String Phone = "3863863636";
-    
+    public static final String Location = "Palm Coast";
+
+    public static final String mainUrl= "https://romanceabroad.com";
     public static final String expectedUrlMedia = "https://romanceabroad.com/media/index";
     public static final String expectedUrlSearch = "https://romanceabroad.com/users/search";
     public static final String expectedUrlStore= "https://romanceabroad.com/store/category-sweets";

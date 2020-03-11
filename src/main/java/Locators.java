@@ -18,7 +18,8 @@ public class Locators {
     public static final By DROP_DOWN_LIST_SELECT_MONTH = By.xpath("//li[@data-handler='selectMonth']//a[text()='May']");
     public static final By BUTTON_YEAR_BIRTH_DATE_FIELD = By.cssSelector("#yearSelect");
     public static final By DROP_DOWN_LIST_SELECT_YEAR = By.xpath("//li[@data-handler='selectYear']//a[text()='2001']");
-
+    public static final By TEXT_FIELD_LOCATION= By.cssSelector("input[name='region_name']");
+public static final By CHECK_BOX_CONFIRMATION = By.cssSelector("input#confirmation");
 
 
 

@@ -1,4 +1,5 @@
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -29,5 +30,23 @@ public class MainPage extends BaseActions{
         driver.findElement(Locators.DROP_DOWN_LIST_SELECT_MONTH).click();
         driver.findElement(Locators.BUTTON_YEAR_BIRTH_DATE_FIELD).click();
         driver.findElement(Locators.DROP_DOWN_LIST_SELECT_YEAR).click();
+
+        driver.findElement(Locators.TEXT_FIELD_PHONE).sendKeys(Data.Phone);
+       // driver.findElement(Locators.TEXT_FIELD_LOCATION).sendKeys(Data.Location);
+        WebElement checkboxConfirmation= driver.findElement(Locators.CHECK_BOX_CONFIRMATION);
+        checkboxConfirmation.click();
     }
 }
+//Method for checkbox if it is checked
+ /*@Test
+   public void test6() {
+        mainPage.clickJoinButton();
+       mainPage.completeFirstPartOfRegistration();
+       mainPage.completeSecondPartOfRegistration();
+
+       WebElement checkbox=driver.findElement(Locators.CHECK_BOX_CONFIRMATION);
+       if(!checkbox.isSelected()){
+           checkbox.click();
+           System.out.println("Checkbox is selected");
+        }
+  }*/
