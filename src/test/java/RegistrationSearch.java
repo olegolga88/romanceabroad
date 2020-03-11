@@ -1,5 +1,5 @@
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 
@@ -12,15 +12,30 @@ public class RegistrationSearch extends BaseUI{
         mainPage.completeFirstPartOfRegistration();
         mainPage.completeSecondPartOfRegistration();
 
-
-
-        driver.findElement(Locators.TEXT_FIELD_PHONE).sendKeys(Data.Phone);
-     WebElement checkboxConfirmation= driver.findElement(By.cssSelector("input#confirmation"));
+     WebElement checkboxConfirmation= driver.findElement(Locators.CHECK_BOX_CONFIRMATION);
      checkboxConfirmation.click();
+     if(!checkboxConfirmation.isSelected()){
+         checkboxConfirmation.click();
+     } else{
+         Assert.fail("Checkbox is already selected!");
+     }
+ }}
+
+
+//Method for checkbox if it is checked
+ /*@Test
+   public void test6() {
+        mainPage.clickJoinButton();
+       mainPage.completeFirstPartOfRegistration();
+       mainPage.completeSecondPartOfRegistration();
+
+       WebElement checkbox=driver.findElement(Locators.CHECK_BOX_CONFIRMATION);
+       if(!checkbox.isSelected()){
+           checkbox.click();
+           System.out.println("Checkbox is selected");
+        }
+  }*/
 
 
 
 
-
- }
-}

@@ -6,6 +6,7 @@ public class StoreTests extends BaseUI {
 
     @Test
     public void testStorePage() {
+        Assert.assertTrue(driver.findElement(Locators.LINK_STORE).isDisplayed(), "Element is not displayed");
         driver.findElement(Locators.LINK_STORE).click();
         driver.getCurrentUrl();
         currentUrlStore = driver.getCurrentUrl();
