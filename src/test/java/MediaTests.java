@@ -1,4 +1,3 @@
-import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class MediaTests extends BaseUI {
@@ -12,6 +11,9 @@ public class MediaTests extends BaseUI {
         driver.getCurrentUrl();
         currentUrlMedia = driver.getCurrentUrl();
         System.out.println(currentUrlMedia);
-        Assert.assertEquals(currentUrlMedia, Data.expectedUrlMedia);
+        //Assert.assertEquals(currentUrlMedia, Data.expectedUrlMedia);
+        softAssert.assertEquals(currentUrlMedia, Data.expectedUrlMedia,"Url is wrong");
+        softAssert.assertAll();
+
     }
 }

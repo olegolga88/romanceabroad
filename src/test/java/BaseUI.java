@@ -11,7 +11,7 @@ public class BaseUI {
     String mainUrl = Data.mainUrl;
     MainPage mainPage;
     SearchPage searchPage;
-
+    SoftAssert softAssert= new SoftAssert();
 
     @BeforeMethod
     public void setUp (){
@@ -23,6 +23,7 @@ public class BaseUI {
         searchPage = new SearchPage(driver,wait);
         driver.manage() .window().maximize();
         driver.get(mainUrl);
+
 
     }
     @AfterMethod
