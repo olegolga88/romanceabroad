@@ -19,7 +19,7 @@ public class Locators {
     public static final By BUTTON_YEAR_BIRTH_DATE_FIELD = By.cssSelector("#yearSelect");
     public static final By DROP_DOWN_LIST_SELECT_YEAR = By.xpath("//li[@data-handler='selectYear']//a[text()='2001']");
     public static final By TEXT_FIELD_LOCATION= By.cssSelector("input[name='region_name']");
-public static final By CHECK_BOX_CONFIRMATION = By.cssSelector("input#confirmation");
+    public static final By CHECK_BOX_CONFIRMATION = By.cssSelector("input#confirmation");
 
 
 
@@ -33,7 +33,7 @@ public static final By CHECK_BOX_CONFIRMATION = By.cssSelector("input#confirmati
     //Main Page
     public static final By VIDEO_FIELD= By.xpath("//iframe[@src='https://www.youtube.com/embed/RRECuJzm3IY?start=85']");
     public static final By VIDEO_BUTTON= By.xpath("//button[@class='ytp-large-play-button ytp-button']");
-
+    public static final By LIST_OF_BUTTONS= By.xpath("//ul[@class='navbar-nav']//li");
 
     //StorePage
     public static final By LINK_STORE = By.xpath("//a[@href =  'https://romanceabroad.com/store/category-sweets']");

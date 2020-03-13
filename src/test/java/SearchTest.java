@@ -20,7 +20,7 @@ public class SearchTest extends BaseUI{
         Assert.assertEquals(currentUrlSearch, Data.expectedUrlSearch);
 
 
-        // DropDawnList
+        //  For DropDawnList
         try {
             Thread.sleep(3000);
         } catch(InterruptedException e){
