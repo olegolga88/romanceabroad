@@ -33,7 +33,8 @@ public class MainPageTests extends BaseUI {
         for (int i = 0; i < links.size(); i++) {
             String info = links.get(i).getText();
             System.out.println(info);
-            links.get(i).click();
+            //links.get(i).click();
+            mainPage.ajaxClick(links.get(i));
 
             if (info.contains("WORK")) {
                 wait.until(ExpectedConditions.elementToBeClickable(Locators.TITLE_OF_PAGE));
@@ -46,7 +47,12 @@ public class MainPageTests extends BaseUI {
                 actualUrlPrettyWomen = driver.getCurrentUrl();
                 Assert.assertEquals(expectedTitlePrettyWomen, actualTitle);
                 Assert.assertEquals(actualUrlPrettyWomen, expectedUrlPrettyWomen);
-                driver.findElement(By.xpath("//a[@class='g-pic-border g-rounded']")).isDisplayed();
+                driver.findElement(Locators.IMAGES_ON_MEDIA_PAGE).isDisplayed();
+                if (actualUrlPrettyWomen.contains("#")) {
+                    Assert.fail("It contains restricted #");
+                } else {
+                    System.out.println("No special character. It is good url");
+                }
             }
             if (info.contains("PHOTOS")) {
                 wait.until(ExpectedConditions.elementToBeClickable(Locators.TITLE_OF_PAGE));
@@ -69,4 +75,20 @@ public class MainPageTests extends BaseUI {
             Assert.fail("We can't find PRETTY WOMEN tab");
         }
     }
+
+    @Test
+    public void test3() {
+        By linkSignIn = By.xpath("//a[@data-action='show-registration-block']");
+////div[@class='col-lg-12 text-center']//a[@href='#']
+        mainPage.ajaxClick(linkSignIn, 0);
+    }
+
+    @Test
+    public void test4() {
+
+        mainPage.ajaxClick(Locators.LIST_OF_BUTTONS, 3);
+
+
+    }
 }
+

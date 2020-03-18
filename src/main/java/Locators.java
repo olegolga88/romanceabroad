@@ -33,7 +33,7 @@ public class Locators {
     public static final By VIDEO_BUTTON = By.xpath("//button[@class='ytp-large-play-button ytp-button']");
     public static final By LIST_OF_BUTTONS = By.xpath("//ul[@class='navbar-nav']//li");
     public static final By TITLE_OF_PAGE = By.xpath("//h1");
-
+public static final By IMAGES_ON_MEDIA_PAGE=By.xpath("//a[@class='g-pic-border g-rounded']");
     //StorePage
     public static final By LINK_STORE = By.xpath("//a[@href =  'https://romanceabroad.com/store/category-sweets']");
 
