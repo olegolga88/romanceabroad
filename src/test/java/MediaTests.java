@@ -1,3 +1,5 @@
+import org.openqa.selenium.WebElement;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class MediaTests extends BaseUI {
@@ -16,4 +18,5 @@ public class MediaTests extends BaseUI {
         softAssert.assertAll();
 
     }
+
 }
