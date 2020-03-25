@@ -14,7 +14,7 @@ import java.lang.reflect.Method;
 public class BaseUI {
     WebDriver driver;
     WebDriverWait wait;
-    String mainUrl = Data.mainUrl;
+    String mainUrl;
     MainPage mainPage;
     SearchPage searchPage;
     SoftAssert softAssert= new SoftAssert();
@@ -51,7 +51,7 @@ public class BaseUI {
         mainPage = new MainPage (driver,wait);
         searchPage = new SearchPage(driver,wait);
         driver.manage() .window().maximize();
-        driver.get(mainUrl);
+        driver.get(Data.mainUrl);
 
 
     }

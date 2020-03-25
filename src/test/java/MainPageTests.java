@@ -22,11 +22,11 @@ public class MainPageTests extends BaseUI {
         String actualTitle;
         String actualUrlPrettyWomen;
         String actualUrlPhotos;
-        String expectedUrlPrettyWomen = "https://romanceabroad.com/users/search";
-        String expectedTitleHowWeWork = "Ukrainian women for marriage";
-        String expectedTitlePrettyWomen = "Single Ukrainian women online";
-        String expectedTitlePhotos = "Ukrainian women photos";
-        String expectedUrlPhotos = "https://romanceabroad.com/media/index";
+
+
+
+
+
         List<WebElement> links = driver.findElements(Locators.LIST_OF_BUTTONS);
         System.out.println(links.size());
 
@@ -39,14 +39,14 @@ public class MainPageTests extends BaseUI {
             if (info.contains("WORK")) {
                 wait.until(ExpectedConditions.elementToBeClickable(Locators.TITLE_OF_PAGE));
                 actualTitle = driver.findElement(Locators.TITLE_OF_PAGE).getText();
-                Assert.assertEquals(expectedTitleHowWeWork, actualTitle);
+                Assert.assertEquals(Data.expectedTitleHowWeWork, actualTitle);
             }
             if (info.contains("PRETTY WOMEN")) {
                 wait.until(ExpectedConditions.elementToBeClickable(Locators.TITLE_OF_PAGE));
                 actualTitle = driver.findElement(Locators.TITLE_OF_PAGE).getText();
                 actualUrlPrettyWomen = driver.getCurrentUrl();
-                Assert.assertEquals(expectedTitlePrettyWomen, actualTitle);
-                Assert.assertEquals(actualUrlPrettyWomen, expectedUrlPrettyWomen);
+                Assert.assertEquals(Data.expectedTitlePrettyWomen, actualTitle);
+                Assert.assertEquals(actualUrlPrettyWomen, Data.expectedUrlPrettyWomen);
                 driver.findElement(Locators.IMAGES_ON_MEDIA_PAGE).isDisplayed();
                 if (actualUrlPrettyWomen.contains("#")) {
                     Assert.fail("It contains restricted #");
@@ -58,8 +58,8 @@ public class MainPageTests extends BaseUI {
                 wait.until(ExpectedConditions.elementToBeClickable(Locators.TITLE_OF_PAGE));
                 actualTitle = driver.findElement(Locators.TITLE_OF_PAGE).getText();
                 actualUrlPhotos = driver.getCurrentUrl();
-                Assert.assertEquals(expectedTitlePhotos, actualTitle);
-                Assert.assertEquals(expectedUrlPhotos, actualUrlPhotos);
+                Assert.assertEquals(Data.expectedTitlePhotos, actualTitle);
+                Assert.assertEquals(Data.expectedUrlPhotos, actualUrlPhotos);
             }
             driver.get(Data.mainUrl);
             links = driver.findElements(Locators.LIST_OF_BUTTONS);
