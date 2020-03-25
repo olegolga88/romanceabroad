@@ -38,6 +38,27 @@ public class BaseActions {
         select.selectByValue(value);
     }
 
+
+    public void getElementIsDisplayed(By locator){
+        WebElement element= driver.findElement(locator);
+        boolean elementDisplayed= element.isDisplayed();
+        if(element.isDisplayed()){
+            System.out.println(elementDisplayed + ""+ "element is displayed");
+        }else {
+            System.out.println(elementDisplayed + ""+ "element is not displayed");
+        }
+    }
+
+    public void getTextString(By locator, String text){
+        driver.findElement(locator).getText();
+        System.out.println(text);
+    }
+
+    public void getTextNumber (By locator, int number){
+        driver.findElement(locator).getText();
+        System.out.println( number);
+    }
+
     public void ajaxClick(WebElement element) {
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
         wait.until(ExpectedConditions.elementToBeClickable(element));
