@@ -5,8 +5,12 @@ public class Locators {
 
     //Media Page
     public static final By LINK_MEDIA = By.cssSelector("a[href='https://romanceabroad.com/media/index']");
+public static final By BUTTON_ALL = By.xpath("//a[@href='https://romanceabroad.com/media/all']");
+ public static final By BUTTON_PHOTO= By.xpath("//a[@href='https://romanceabroad.com/media/photo']");
+public static final By BUTTON_ALBUMS= By.xpath("//a[@href='https://romanceabroad.com/media/albums']");
+public static final By BUTTON_VIDEO= By.xpath("//a[@href='https://romanceabroad.com/media/video']");
 
-    // Registration Page
+    // MainPage-Registration
     public static final By BUTTON_REGISTRATION = By.xpath("//button[@id='show-registration-block']");
     public static final By TEXT_FIELD_EMAIL = By.cssSelector("input#email");
     public static final By TEXT_FIELD_PASSWORD = By.cssSelector("input#password");
@@ -28,13 +32,14 @@ public class Locators {
     public static final By DROP_DOWN_LIST_SORT_BY = By.xpath("//div[@class='form-inline']//select");
     public static final By DROP_DOWN_LIST_MIN_AGE = By.xpath("//select[@id='age_min']");
     public static final By DROP_DOWN_LIST_MAX_AGE = By.xpath("//select[@id='age_max']");
-
+    public static final By BUTTON_SEARCH = By.xpath("//input[@name='main_search_button']");
     //Main Page
     public static final By VIDEO_FIELD = By.xpath("//iframe[@src='https://www.youtube.com/embed/RRECuJzm3IY?start=85']");
     public static final By VIDEO_BUTTON = By.xpath("//button[@class='ytp-large-play-button ytp-button']");
     public static final By LIST_OF_BUTTONS = By.xpath("//ul[@class='navbar-nav']//li");
     public static final By TITLE_OF_PAGE = By.xpath("//h1");
     public static final By IMAGES_ON_MEDIA_PAGE = By.xpath("//a[@class='g-pic-border g-rounded']");
+    public static final By LINK_SIGN_IN = By.xpath("//a[@data-action='show-registration-block']");
     //StorePage
     public static final By LINK_STORE = By.xpath("//a[@href =  'https://romanceabroad.com/store/category-sweets']");
 

@@ -12,7 +12,7 @@ String currentUrlContent;
     @Test
     public void testLinkButtonHowWeWork(){
         contentPage.testHowWeWorkLink();
-        //Assert.assertEquals(currentUrlContent,Data.expectedUrlContent);
+        Assert.assertEquals(currentUrlContent,Data.expectedUrlContent);
 
     }
 }

@@ -12,14 +12,14 @@ public class BlogPage extends BaseActions {
 
     String currentUrl;
 
-    public void testBlogPageListOfElements1() {
+    public void clickLinkBlog() {
 
         driver.findElement(Locators.LINK_BLOG).click();
         driver.getCurrentUrl();
         currentUrl = driver.getCurrentUrl();
         System.out.println(currentUrl);
     }
-    public void testBlogPageListOfElements2() {
+    public void testBlogPageListOfElements() {
         ajaxClick(Locators.LIST_OF_ELEMENTS_BLOG_PAGE);
         List<WebElement> links = driver.findElements(Locators.LIST_OF_ELEMENTS_BLOG_PAGE);
         System.out.println(links.size());

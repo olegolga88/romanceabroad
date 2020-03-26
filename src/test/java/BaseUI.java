@@ -20,6 +20,8 @@ public class BaseUI {
     BlogPage blogPage;
     BookTourPage bookTourPage;
     ContentPage contentPage;
+    MediaPage mediaPage;
+    StorePage storePage;
     SoftAssert softAssert= new SoftAssert();
 
     @BeforeMethod

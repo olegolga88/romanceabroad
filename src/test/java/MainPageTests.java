@@ -7,6 +7,20 @@ import org.testng.annotations.Test;
 import java.util.List;
 
 public class MainPageTests extends BaseUI {
+    @Test
+    public void testRegistration() {
+        mainPage.clickJoinButton();
+        mainPage.completeFirstPartOfRegistration();
+        mainPage.completeSecondPartOfRegistration();
+
+        WebElement checkboxConfirmation= driver.findElement(Locators.CHECK_BOX_CONFIRMATION);
+        if(!checkboxConfirmation.isSelected()){
+            checkboxConfirmation.click();
+            System.out.println("Checkbox is selected");
+        }else {
+            Assert.fail("Checkbox is already selected!");
+        }
+    }
 
     @Test
     public void test() throws InterruptedException {
@@ -75,9 +89,8 @@ public class MainPageTests extends BaseUI {
 
     @Test
     public void test3() {
-        By linkSignIn = By.xpath("//a[@data-action='show-registration-block']");
-////div[@class='col-lg-12 text-center']//a[@href='#']
-        mainPage.ajaxClick(linkSignIn, 0);
+
+        mainPage.ajaxClick(Locators.LINK_SIGN_IN, 0);
     }
 
     @Test

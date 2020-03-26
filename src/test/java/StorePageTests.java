@@ -1,7 +1,7 @@
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class StoreTests extends BaseUI {
+public class StorePageTests extends BaseUI {
     String currentUrlStore;
 
     @Test
