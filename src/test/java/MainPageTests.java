@@ -24,9 +24,6 @@ public class MainPageTests extends BaseUI {
         String actualUrlPhotos;
 
 
-
-
-
         List<WebElement> links = driver.findElements(Locators.LIST_OF_BUTTONS);
         System.out.println(links.size());
 

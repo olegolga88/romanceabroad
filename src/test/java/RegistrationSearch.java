@@ -13,13 +13,14 @@ public class RegistrationSearch extends BaseUI{
         mainPage.completeSecondPartOfRegistration();
 
      WebElement checkboxConfirmation= driver.findElement(Locators.CHECK_BOX_CONFIRMATION);
-     checkboxConfirmation.click();
      if(!checkboxConfirmation.isSelected()){
          checkboxConfirmation.click();
-     } else{
+         System.out.println("Checkbox is selected");
+     }else {
          Assert.fail("Checkbox is already selected!");
      }
- }}
+ }
+}
 
 
 //Method for checkbox if it is checked

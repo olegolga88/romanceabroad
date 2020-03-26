@@ -9,6 +9,7 @@ public class MainPage extends BaseActions{
     public MainPage(WebDriver driver, WebDriverWait wait) {
         super(driver, wait);
     }
+
     public void clickJoinButton(){
         driver.findElement(Locators.BUTTON_REGISTRATION).click();
 

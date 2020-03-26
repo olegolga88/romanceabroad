@@ -39,6 +39,7 @@ public class BaseActions {
     }
 
 
+
     public void getElementIsDisplayed(By locator){
         WebElement element= driver.findElement(locator);
         boolean elementDisplayed= element.isDisplayed();
@@ -59,10 +60,20 @@ public class BaseActions {
         System.out.println( number);
     }
 
+    public void getClickByMouse(WebElement element){
+        Actions action= new Actions(driver);
+        action.moveToElement(element).perform();
+    }
+
+    public void getBackStep(){
+        driver.navigate().back();
+    }
+
     public void ajaxClick(WebElement element) {
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
         wait.until(ExpectedConditions.elementToBeClickable(element));
-        element.click();
+        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
+
     }
 
     public void ajaxClick(By by) {

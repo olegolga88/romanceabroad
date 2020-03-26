@@ -8,9 +8,6 @@ public class SearchTest extends BaseUI{
     String currentUrlSearch;
 
 
-
-
-
     @Test
     public void testSearchPage() {
         driver.findElement(Locators.LINK_SEARCH).click();
@@ -32,7 +29,7 @@ public class SearchTest extends BaseUI{
 
                 searchPage.getDropDownListByValue(Locators.DROP_DOWN_LIST_SORT_BY,"name");
                 searchPage.getDropDownListByIndex(Locators.DROP_DOWN_LIST_MIN_AGE,0);
-                searchPage.getDropDownListByIndex(Locators.DROP_DOWN_LIST_MAX_AGE,10);
+                searchPage.getDropDownListByText(Locators.DROP_DOWN_LIST_MAX_AGE,"32");
     }
 
 
