@@ -7,15 +7,9 @@ public class ContentPage extends BaseActions {
         super(driver, wait);
     }
 
-    String currentUrlContent;
+public void clickLinkContent(){
+    wait.until(ExpectedConditions.elementToBeClickable(Locators.LINK_CONTENT));
+    driver.findElement(Locators.LINK_CONTENT).click();
+}
 
-    public void testHowWeWorkLink() {
-        wait.until(ExpectedConditions.elementToBeClickable(Locators.LINK_CONTENT));
-        driver.findElement(Locators.LINK_CONTENT);
-        driver.getCurrentUrl();
-        currentUrlContent = driver.getCurrentUrl();
-        System.out.println(currentUrlContent);
-
-
-    }
 }

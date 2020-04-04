@@ -10,8 +10,12 @@ public class SearchPage extends BaseActions {
 
     public void clickLinkSearch() {
         driver.findElement(Locators.LINK_SEARCH).click();
-        driver.getCurrentUrl();
-        currentUrlSearch = driver.getCurrentUrl();
-        System.out.println(currentUrlSearch);
+
     }
+    public void clickButtonSearch(){
+
+        driver.findElement(Locators.BUTTON_SEARCH).click();
+    }
+
+
 }

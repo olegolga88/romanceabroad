@@ -7,13 +7,10 @@ public class BookTourPage extends BaseActions {
         super(driver, wait);
     }
 
-    String currentUrlBookNow;
 
     public void testBookNow() {
         wait.until(ExpectedConditions.elementToBeClickable(Locators.LINK_BOOK_NOW));
         driver.findElement(Locators.LINK_BOOK_NOW).click();
-        driver.getCurrentUrl();
-        currentUrlBookNow = driver.getCurrentUrl();
-        System.out.println(currentUrlBookNow);
+
     }
 }

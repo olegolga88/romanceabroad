@@ -1,3 +1,4 @@
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -15,26 +16,26 @@ public class BlogPage extends BaseActions {
     public void clickLinkBlog() {
 
         driver.findElement(Locators.LINK_BLOG).click();
-        driver.getCurrentUrl();
-        currentUrl = driver.getCurrentUrl();
-        System.out.println(currentUrl);
+
     }
     public void testBlogPageListOfElements() {
-        ajaxClick(Locators.LIST_OF_ELEMENTS_BLOG_PAGE);
+
         List<WebElement> links = driver.findElements(Locators.LIST_OF_ELEMENTS_BLOG_PAGE);
         System.out.println(links.size());
 
         for (int i = 0; i < links.size(); i++) {
-            System.out.println(i);
             String info = links.get(i).getText();
             System.out.println(info);
             ajaxClick(links.get(i));
-            ajaxClick(Locators.LEFT_MENU_BLOG_PAGE);
+            clickBlogMenu();
             links = driver.findElements(Locators.LIST_OF_ELEMENTS_BLOG_PAGE);
 
 
         }
 
+    }
+    public void clickBlogMenu(){
+        ajaxClick(Locators.LEFT_MENU_BLOG_PAGE);
     }
 }
 

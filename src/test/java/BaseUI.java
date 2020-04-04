@@ -10,11 +10,12 @@ import org.testng.annotations.Parameters;
 import org.testng.asserts.SoftAssert;
 
 import java.lang.reflect.Method;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 public class BaseUI {
     WebDriver driver;
     WebDriverWait wait;
-    String mainUrl;
     MainPage mainPage;
     SearchPage searchPage;
     BlogPage blogPage;
@@ -24,9 +25,10 @@ public class BaseUI {
     StorePage storePage;
     SoftAssert softAssert= new SoftAssert();
 
-    @BeforeMethod
+
+    @BeforeMethod (groups = {"user","admin","ie"},alwaysRun = true)
     @Parameters("browser")
-    public void setup(@Optional("chrome") String browser, Method method){
+    public void setup(@Optional("chrome") String browser, Method method) throws MalformedURLException {
         // Check if parameter passed from TestNG is 'firefox'
         if (browser.equalsIgnoreCase("firefox")) {
             // Create firefox instance
@@ -56,6 +58,11 @@ public class BaseUI {
         mainPage = new MainPage (driver,wait);
         searchPage = new SearchPage(driver,wait);
         blogPage = new BlogPage(driver,wait);
+        bookTourPage = new BookTourPage(driver,wait);
+        storePage= new StorePage(driver,wait);
+        contentPage= new ContentPage(driver,wait);
+        mediaPage= new MediaPage(driver,wait);
+
         driver.manage() .window().maximize();
         driver.get(Data.mainUrl);
 

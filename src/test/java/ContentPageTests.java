@@ -11,7 +11,9 @@ String currentUrlContent;
 
     @Test
     public void testLinkButtonHowWeWork(){
-        contentPage.testHowWeWorkLink();
+        contentPage.clickLinkContent();
+        currentUrlContent=driver.getCurrentUrl();
+        System.out.println(currentUrlContent);
         Assert.assertEquals(currentUrlContent,Data.expectedUrlContent);
 
     }

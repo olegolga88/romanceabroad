@@ -10,8 +10,6 @@ public class MediaPage extends BaseActions {
 
     public void clickMediaPageLink() {
         driver.findElement(Locators.LINK_MEDIA).click();
-        driver.getCurrentUrl();
-        currentUrlMedia = driver.getCurrentUrl();
-        System.out.println(currentUrlMedia);
+
     }
 }

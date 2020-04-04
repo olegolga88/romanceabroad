@@ -44,8 +44,8 @@ public class MainPageTests extends BaseUI {
         for (int i = 0; i < links.size(); i++) {
             String info = links.get(i).getText();
             System.out.println(info);
-            //links.get(i).click();
-            mainPage.ajaxClick(links.get(i));
+            links.get(i).click();
+            //mainPage.ajaxClick(links.get(i));
 
             if (info.contains("WORK")) {
                 wait.until(ExpectedConditions.elementToBeClickable(Locators.TITLE_OF_PAGE));
@@ -99,6 +99,14 @@ public class MainPageTests extends BaseUI {
         mainPage.ajaxClick(Locators.LIST_OF_BUTTONS, 3);
 
 
+    }
+@Test
+    public void testLinksOnMainPage(){
+        mainPage.checkLinksOnWebPage("//a","href");
+    mainPage.checkLinksOnWebPage("//img","src");
+    driver.findElement(Locators.LINK_SEARCH);
+    mainPage.checkLinksOnWebPage("//a","href");
+    mainPage.checkLinksOnWebPage("//img","src");
     }
 }
 

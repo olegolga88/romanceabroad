@@ -8,6 +8,8 @@ public class BookTourTests extends BaseUI {
     @Test
     public void testBookNowButton() {
         bookTourPage.testBookNow();
+        currentUrlBookNow = driver.getCurrentUrl();
+        System.out.println(currentUrlBookNow);
         Assert.assertEquals(currentUrlBookNow, Data.expectedUrlBookNow);
 
     }
