@@ -39,6 +39,11 @@ public class BaseActions {
     public void getDropDownListByValue(By locator, String value) {
         Select select = new Select(driver.findElement(locator));
         select.selectByValue(value);
+
+    }
+    public void getDropDawnListByValue(WebElement element, String value){
+        Select select= new Select(element);
+        select.selectByValue(value);
     }
 
 
@@ -170,7 +175,7 @@ public class BaseActions {
         for (int i = 0; i < links.size(); i++) {
             WebElement ele = links.get(i);
             String url = ele.getAttribute(attribute);
-            verifyLinkActive(url);
+               verifyLinkActive(url);
 
             System.out.println("Total links are" + links.size());
 
@@ -180,12 +185,36 @@ public class BaseActions {
     //Method for link verification
     public void verifyLinkActive(String linkUrl) {
         try {
-            URL url= new URL(linkUrl);
-            HttpURLConnection httpURLConnect= (HttpURLConnection) url.openConnection();
+            URL url = new URL(linkUrl);
+            HttpURLConnection httpURLConnect = (HttpURLConnection) url.openConnection();
             httpURLConnect.setConnectTimeout(3000);
             httpURLConnect.connect();
-            if 
+            if (httpURLConnect.getResponseCode() == 200) {
+                System.out.println(linkUrl + "-" + httpURLConnect.getResponseMessage());
+            } else if (httpURLConnect.getResponseCode() >= 400 && httpURLConnect.getResponseCode() <= 504) {
+                System.out.println(linkUrl + "-" + httpURLConnect.getResponseMessage() + "-" + httpURLConnect.getResponseMessage());
 
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
+    public int getSizeDropDownList(By locator){
+        try{
+            WebElement element = driver.findElement(locator);
+            ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView(true);",element);
+            Select select = new Select(driver.findElement(locator));
+            return select.getOptions().size();
+
+        }catch ( NoSuchElementException e){
+            System.out.println("getSizeDropDownList error");
+        }
+        return 0;
+    }
+
 }
+
+
+
+
+
