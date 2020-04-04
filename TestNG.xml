@@ -1,19 +1,43 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
-<suite name="TestSuite" parallel="none" >
+<suite name="TestSuite" parallel="none">
     <test name="IETestCases">
         <parameter name="browser" value="ie"/>
+
+        <groups>
+            <run>
+                <exclude name="ie"/>
+                <include name="admin"/>
+                <include name="user"/>
+            </run>
+        </groups>
         <classes>
 
         </classes>
     </test>
     <test name="FirefoxTestCases">
         <parameter name="browser" value="firefox"/>
+        <groups>
+            <run>
+                <exclude name="ie"/>
+                <include name="admin"/>
+                <include name="user"/>
+            </run>
+        </groups>
         <classes>
 
         </classes>
     </test>
     <test name="ChromeTestCases">
         <parameter name="browser" value="chrome"/>
+
+        <groups>
+            <run>
+                <exclude name="ie"/>
+                <include name="admin"/>
+                <include name="user"/>
+            </run>
+        </groups>
+
         <classes>
 
         </classes>

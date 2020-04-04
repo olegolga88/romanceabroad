@@ -1,4 +1,5 @@
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -75,7 +76,8 @@ public class SearchPageTests extends BaseUI {
         // Assert.assertEquals(currentUrlSearch, Data.expectedUrlSearch);
         softAssert.assertEquals(currentUrlSearch, Data.expectedUrlSearch, "Url is wrong ");
         WebElement dropDownListSortBy = driver.findElement(Locators.DROP_DOWN_LIST_SORT_BY);
-        searchPage.getDropDawnListByValue(dropDownListSortBy, "name");
+        wait.until(ExpectedConditions.elementToBeClickable(Locators.DROP_DOWN_LIST_SORT_BY));
+        searchPage.getDropDownListByValue(dropDownListSortBy, "name");
         softAssert.assertAll();
 
     }

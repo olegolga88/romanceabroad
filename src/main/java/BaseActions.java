@@ -41,7 +41,7 @@ public class BaseActions {
         select.selectByValue(value);
 
     }
-    public void getDropDawnListByValue(WebElement element, String value){
+    public void getDropDownListByValue(WebElement element, String value){
         Select select= new Select(element);
         select.selectByValue(value);
     }
