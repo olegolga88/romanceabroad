@@ -30,6 +30,19 @@ public class MainPageTests extends BaseUI {
         driver.switchTo().frame(video);
         driver.findElement(Locators.VIDEO_BUTTON).click();
     }
+    @Test
+    public void smokeTestMainPage() {
+        List<WebElement> mainTabs = driver.findElements(Locators.LIST_OF_BUTTONS);
+        System.out.println(mainTabs.size());
+
+        for (int i = 0; i < mainTabs.size(); i++) {
+             mainTabs.get(i).click();
+          driver.get(Data.mainUrl);
+            mainTabs = driver.findElements(Locators.LIST_OF_BUTTONS);
+
+        }
+
+    }
 
     @Test
     public void test1() {

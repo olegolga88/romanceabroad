@@ -10,6 +10,7 @@ public static final By BUTTON_ALL = By.xpath("//a[@href='https://romanceabroad.c
 public static final By BUTTON_ALBUMS= By.xpath("//a[@href='https://romanceabroad.com/media/albums']");
 public static final By BUTTON_VIDEO= By.xpath("//a[@href='https://romanceabroad.com/media/video']");
 public static final By LIST_OF_BUTTONS_MEDIA=By.xpath("//ul[@class='b-tabs']//li");
+
     // MainPage-Registration
     public static final By BUTTON_REGISTRATION = By.xpath("//button[@id='show-registration-block']");
     public static final By TEXT_FIELD_EMAIL = By.cssSelector("input#email");
@@ -49,7 +50,7 @@ public static final By BUTTON_HELP_FOOTER_SEARCH_PAGE= By.xpath("//footer//div//
     //Main Page
     public static final By VIDEO_FIELD = By.xpath("//iframe[@src='https://www.youtube.com/embed/RRECuJzm3IY?start=85']");
     public static final By VIDEO_BUTTON = By.xpath("//button[@class='ytp-large-play-button ytp-button']");
-    public static final By LIST_OF_BUTTONS = By.xpath("//ul[@class='navbar-nav']//li");
+    public static final By LIST_OF_BUTTONS = By.xpath("//ul[@class='navbar-nav']//li/a");
     public static final By TITLE_OF_PAGE = By.xpath("//h1");
     public static final By IMAGES_ON_MEDIA_PAGE = By.xpath("//a[@class='g-pic-border g-rounded']");
     public static final By LINK_SIGN_IN = By.xpath("//a[@data-action='show-registration-block']");

@@ -11,7 +11,13 @@
             </run>
         </groups>
         <classes>
-
+            <class name="SearchPageTests">
+                <methods>
+                    <include name=".*TestCase11.*"/>
+                    <include name=".*Assert.*"/>
+                    <exclude name=".*List.*"/>
+                </methods>
+            </class>
         </classes>
     </test>
     <test name="FirefoxTestCases">
@@ -24,7 +30,7 @@
             </run>
         </groups>
         <classes>
-
+            <class name="SearchPageTests"/>
         </classes>
     </test>
     <test name="ChromeTestCases">
@@ -39,7 +45,13 @@
         </groups>
 
         <classes>
-
+            <class name="SearchPageTests">
+            <methods>
+                <include name=".*TestCase11.*"/>
+                <include name=".*Assert.*"/>
+                <exclude name=".*List.*"/>
+            </methods>
+            </class>
         </classes>
     </test>
 </suite>

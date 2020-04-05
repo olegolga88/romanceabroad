@@ -1,5 +1,4 @@
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -69,14 +68,14 @@ public class SearchPageTests extends BaseUI {
 
     @Test(priority = 5,enabled = testCase15, groups = {"admin","user"})
     public void testSearchPageTestCase15() {
-        Assert.assertTrue(driver.findElement(Locators.LINK_SEARCH).isDisplayed(), "Element is not displated");
+        Assert.assertTrue(driver.findElement(Locators.LINK_SEARCH).isDisplayed(), "Element is not displayed");
         searchPage.clickLinkSearch();
         currentUrlSearch = driver.getCurrentUrl();
         System.out.println(currentUrlSearch);
         // Assert.assertEquals(currentUrlSearch, Data.expectedUrlSearch);
         softAssert.assertEquals(currentUrlSearch, Data.expectedUrlSearch, "Url is wrong ");
+        searchPage.javaWaitSec(3);
         WebElement dropDownListSortBy = driver.findElement(Locators.DROP_DOWN_LIST_SORT_BY);
-        wait.until(ExpectedConditions.elementToBeClickable(Locators.DROP_DOWN_LIST_SORT_BY));
         searchPage.getDropDownListByValue(dropDownListSortBy, "name");
         softAssert.assertAll();
 
