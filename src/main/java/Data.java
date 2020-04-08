@@ -3,8 +3,14 @@ public class Data {
     public static final String email = "11@gmail.com";
     public static final String password = "338377377m";
     public static final String nickname = "paul444";
-    public static final String Phone = "3863863636";
-    public static final String Location = "Palm Coast";
+    public static final String phone = "3863863636";
+    public static final String city = "Sydney";
+    public static final String location= "State of New South Wales, Australia";
+
+    public static final String day= "1";
+    public static final String month="May";
+    public static final String year="1998";
+
 
     public static final String mainUrl = "https://romanceabroad.com";
     public static final String expectedUrlMedia = "https://romanceabroad.com/media/index";
@@ -20,5 +26,13 @@ public class Data {
     public static final String expectedTitlePrettyWomen = "Single Ukrainian women online";
     public static final String expectedTitlePhotos = "Ukrainian women photos";
     public static final String expectedUrlPhotos = "https://romanceabroad.com/media/index";
+
+    //Contact Us
+    public static final String reason= "Other";
+    public static final String yourName= "Olga";
+    public static final String yourEmail = "12@gmail.com";
+    public static final String subject = "Meeting";
+public static final String massage= "At what time can we meet";
+public static final String captcha="65059";
 }
 

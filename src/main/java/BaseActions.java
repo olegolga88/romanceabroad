@@ -41,8 +41,9 @@ public class BaseActions {
         select.selectByValue(value);
 
     }
-    public void getDropDownListByValue(WebElement element, String value){
-        Select select= new Select(element);
+
+    public void getDropDownListByValue(WebElement element, String value) {
+        Select select = new Select(element);
         select.selectByValue(value);
     }
 
@@ -175,7 +176,7 @@ public class BaseActions {
         for (int i = 0; i < links.size(); i++) {
             WebElement ele = links.get(i);
             String url = ele.getAttribute(attribute);
-               verifyLinkActive(url);
+            verifyLinkActive(url);
 
             System.out.println("Total links are" + links.size());
 
@@ -199,18 +200,34 @@ public class BaseActions {
             e.printStackTrace();
         }
     }
-    public int getSizeDropDownList(By locator){
-        try{
+
+    public int getSizeDropDownList(By locator) {
+        try {
             WebElement element = driver.findElement(locator);
-            ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView(true);",element);
+            ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
             Select select = new Select(driver.findElement(locator));
             return select.getOptions().size();
 
-        }catch ( NoSuchElementException e){
+        } catch (NoSuchElementException e) {
             System.out.println("getSizeDropDownList error");
         }
         return 0;
     }
+
+    public void clickValueOfList(By locator, String text) {
+        List<WebElement> elements = driver.findElements(locator);
+        for (int i = 0; i < elements.size(); i++) {
+            WebElement elementOfList = elements.get(i);
+            String value = elementOfList.getText();
+            if (value.contains(text)) {
+                elementOfList.click();
+            }
+        }
+    }
+public String getAnyTitle(){
+   String title= driver.findElement(Locators.H1_TITLE).getText();
+   return title;
+}
 
 }
 
