@@ -60,8 +60,8 @@ public static final By H1_TITLE= By.xpath("//h1");
     public static final By ARTICLE_ADVERTISING_CONTENT_PAGE = By.xpath("//ul//li//a[@href='https://romanceabroad.com/content/view/advertising']");
     public static final By SLIDE_MENU_BUTTON_CONTENT_PAGE = By.xpath("//header[@id='main-menu-container']//a[@data-slidemenu='#slidemenu']");
 public static final By CONTACT_US_BUTTON_FOOTER_FIELD= By.xpath("//a[@href='https://romanceabroad.com/tickets/']//div");
-public static final By LIST_OF_ARTICLES_CONTENT_PAGE= By.xpath("//div//ul[@class='nav nav-pills nav-stacked content-pages-tree']//li");
-    // BlogPage
+public static final By LIST_OF_ARTICLES_CONTENT_PAGE= By.xpath("//div[@class='col-xs-12 col-md-3']//ul[@class='nav nav-pills nav-stacked content-pages-tree']//li");
+    //    // BlogPage
     public static final By LINK_BLOG = By.xpath("//a[@href='https://romanceabroad.com/content/view/blog']");
     public static final By LEFT_MENU_BLOG_PAGE = By.xpath("//div[@class='inside account_menu']");
     public static final By LIST_OF_ELEMENTS_BLOG_PAGE = By.xpath("//div[@class='inside account_menu']//ul//li//a");

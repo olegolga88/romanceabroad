@@ -36,10 +36,21 @@ public class ContentPage extends BaseActions {
         driver.findElement(Locators.BUTTON_SEND_CONTACT_US).click();
     }
 
+    public void clickContentMenu() {
+        ajaxClick(Locators.LEFT_MENU_BLOG_PAGE);
+    }
+
     public List<WebElement> collectAllLinksOfArticles() {
 
         List<WebElement> linksOfArticles = driver.findElements(Locators.LIST_OF_ARTICLES_CONTENT_PAGE);
-        return linksOfArticles;
+        for (int i = 0; i < linksOfArticles.size(); i++) {
+            String info = linksOfArticles.get(i).getText();
+            System.out.println(info);
+            ajaxClick(linksOfArticles.get(i));
+            clickContentMenu();
+            linksOfArticles = driver.findElements(Locators.LIST_OF_ARTICLES_CONTENT_PAGE);
+        }
 
+        return linksOfArticles;
     }
 }

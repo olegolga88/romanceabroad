@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainPageTests extends BaseUI {
-    @DataProvider(name ="Registration2")
+    @DataProvider(name ="Registration")
     public static Object[][] testRegistration2() throws Exception{
         ArrayList<Object[]> out = new ArrayList<>();
         Files.readAllLines(Paths.get("Registration.csv")).stream().forEach(s-> {
@@ -21,7 +21,7 @@ public class MainPageTests extends BaseUI {
         });
         return out.toArray(new Object[out.size()][]);
     }
-    @Test
+    @Test (dataProvider ="Registration" )
     public void testRegistration() {
         mainPage.clickJoinButton();
         mainPage.completeFirstPartOfRegistration(Data.email,Data.password);

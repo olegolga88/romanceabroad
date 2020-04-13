@@ -1,4 +1,5 @@
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import java.util.List;
@@ -28,11 +29,18 @@ public class ContentPageTests extends BaseUI {
 
     String nameOfArticle;
     String titleOfArticles;
-
+String currentUrl;
     @Test
     public void testArticlesAndTitles() {
         contentPage.clickLinkContent();
-        List<WebElement> linksOfArticles = contentPage.collectAllLinksOfArticles();
+            driver.getCurrentUrl();
+            currentUrl = driver.getCurrentUrl();
+            System.out.println(currentUrl);
+            Assert.assertEquals(currentUrl,Data.expectedUrlContent);
+            contentPage.clickContentMenu();
+            contentPage.collectAllLinksOfArticles();
+
+       List<WebElement> linksOfArticles = contentPage.collectAllLinksOfArticles();
         System.out.println(linksOfArticles.size());
         for (int i = 0; i < linksOfArticles.size(); i++) {
             WebElement link = linksOfArticles.get(i);
@@ -40,12 +48,24 @@ public class ContentPageTests extends BaseUI {
             if (nameOfArticle.contains("How it works")) {
             } else if (nameOfArticle.contains("Kharkov dating agency")) {
             } else if (nameOfArticle.contains("Kiev dating agency")) {
+            } else if (nameOfArticle.contains("Beautiful urkainian girls")) {
+            } else if (nameOfArticle.contains("Real Ukrainian brides")) {
+            } else if (nameOfArticle.contains("Eastern European women")) {
+            } else if (nameOfArticle.contains("Marriage agency in Ukraine")) {
+            } else if (nameOfArticle.contains("Kiev dating site")) {
+            } else if (nameOfArticle.contains("Find Ukrainian girlfriend")) {
+            } else if (nameOfArticle.contains("Slavic women for marriage")) {
+            } else if (nameOfArticle.contains("How to marry Ukrainian lady")) {
+            } else if (nameOfArticle.contains("Free Ukrainian dating site")) {
+            } else if (nameOfArticle.contains("9 Factors to Keep in Mind When Dating a Ukrainian Woman")) {
+            } else if (nameOfArticle.contains("Is There a Difference Between Dating or Courting a Ukrainian Woman?")) {
+
             } else {
+
                 link.click();
                 titleOfArticles = contentPage.getAnyTitle();
                 Assert.assertEquals(nameOfArticle, titleOfArticles);
-                linksOfArticles = contentPage.collectAllLinksOfArticles();
-
+                contentPage.collectAllLinksOfArticles();
 
             }
         }

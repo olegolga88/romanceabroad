@@ -8,7 +8,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 import org.testng.asserts.SoftAssert;
-
+import io.github.bonigarcia.wdm.WebDriverManager;
 import java.lang.reflect.Method;
 import java.net.MalformedURLException;
 import java.net.URL;

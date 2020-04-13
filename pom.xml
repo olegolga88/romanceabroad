@@ -62,6 +62,13 @@
         <version>RELEASE</version>
     </dependency>
 
+    <!-- automatically update drivers -->
+    <dependency>
+        <groupId>io.github.bonigarcia</groupId>
+        <artifactId>webdrivermanager</artifactId>
+        <version>3.7.1</version>
+    </dependency>
+
 </dependencies>
 
 </project>
