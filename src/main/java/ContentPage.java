@@ -42,13 +42,13 @@ public class ContentPage extends BaseActions {
 
     public List<WebElement> collectAllLinksOfArticles() {
 
-        List<WebElement> linksOfArticles = driver.findElements(Locators.LIST_OF_ARTICLES_CONTENT_PAGE);
+        List<WebElement> linksOfArticles = driver.findElements(Locators.LIST_OF_ELEMENTS_BLOG_PAGE);
         for (int i = 0; i < linksOfArticles.size(); i++) {
             String info = linksOfArticles.get(i).getText();
             System.out.println(info);
             ajaxClick(linksOfArticles.get(i));
             clickContentMenu();
-            linksOfArticles = driver.findElements(Locators.LIST_OF_ARTICLES_CONTENT_PAGE);
+            linksOfArticles = driver.findElements(Locators.LIST_OF_ELEMENTS_BLOG_PAGE);
         }
 
         return linksOfArticles;

@@ -1,7 +1,12 @@
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ContentPageTests extends BaseUI {
@@ -16,12 +21,21 @@ public class ContentPageTests extends BaseUI {
         Assert.assertEquals(currentUrlContent, Data.expectedUrlContent);
 
     }
+    @DataProvider(name ="Contact Us")
+    public static Object[][] testContactUsPage1() throws Exception{
+        ArrayList<Object[]> out = new ArrayList<>();
+        Files.readAllLines(Paths.get("ContactUs.csv")).stream().forEach(s-> {
+            String[] data = s.split(",");
+            out.add(new Object[]{data[0], data[1], });
+        });
+        return out.toArray(new Object[out.size()][]);
+    }
 
-    @Test
-    public void testContactUsPage() {
+    @Test(dataProvider ="Contact Us")
+    public void testContactUsPage(String yourName,String yourEmail) {
         contentPage.clickLinkContent();
         contentPage.clickLinkContactUs();
-        contentPage.completeContactUsForm(Data.reason, Data.yourName, Data.yourEmail, Data.subject,
+        contentPage.completeContactUsForm(Data.reason, yourName, yourEmail, Data.subject,
                 Data.massage, Data.captcha);
 
 
@@ -38,14 +52,18 @@ String currentUrl;
             System.out.println(currentUrl);
             Assert.assertEquals(currentUrl,Data.expectedUrlContent);
             contentPage.clickContentMenu();
-            contentPage.collectAllLinksOfArticles();
 
-       List<WebElement> linksOfArticles = contentPage.collectAllLinksOfArticles();
+       List<WebElement> linksOfArticles = driver.findElements(Locators.LIST_OF_ELEMENTS_BLOG_PAGE);
         System.out.println(linksOfArticles.size());
         for (int i = 0; i < linksOfArticles.size(); i++) {
-            WebElement link = linksOfArticles.get(i);
+           contentPage.clickContentMenu();
+            WebElement link=linksOfArticles.get(i);
             nameOfArticle = link.getText();
-            if (nameOfArticle.contains("How it works")) {
+
+            mainPage.javaWaitSec(1);
+
+           linksOfArticles=driver.findElements(Locators.LIST_OF_ELEMENTS_BLOG_PAGE);
+           if (nameOfArticle.contains("How it works")) {
             } else if (nameOfArticle.contains("Kharkov dating agency")) {
             } else if (nameOfArticle.contains("Kiev dating agency")) {
             } else if (nameOfArticle.contains("Beautiful urkainian girls")) {
@@ -62,7 +80,7 @@ String currentUrl;
 
             } else {
 
-                link.click();
+                contentPage.ajaxClick(link);
                 titleOfArticles = contentPage.getAnyTitle();
                 Assert.assertEquals(nameOfArticle, titleOfArticles);
                 contentPage.collectAllLinksOfArticles();
@@ -71,4 +89,26 @@ String currentUrl;
         }
 
     }
+    @Test
+    public void testArticlesAndTitles1(){
+        contentPage.clickLinkContent();
+        driver.getCurrentUrl();
+        currentUrl = driver.getCurrentUrl();
+        System.out.println(currentUrl);
+        Assert.assertEquals(currentUrl,Data.expectedUrlContent);
+        contentPage.clickContentMenu();
+
+        List<WebElement> linksOfArticles = driver.findElements(Locators.LIST_OF_ELEMENTS_BLOG_PAGE);
+        System.out.println(linksOfArticles.size());
+        for (int i = 0; i < linksOfArticles.size(); i++) {
+            WebElement link = linksOfArticles.get(i);
+            nameOfArticle = link.getText();
+            contentPage.ajaxClick(link);
+            contentPage.clickContentMenu();
+            mainPage.javaWaitSec(1);
+            titleOfArticles = contentPage.getAnyTitle();
+            linksOfArticles = driver.findElements(Locators.LIST_OF_ELEMENTS_BLOG_PAGE);
+        }
+    }
 }
+

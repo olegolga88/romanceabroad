@@ -22,19 +22,21 @@ public class MainPageTests extends BaseUI {
         return out.toArray(new Object[out.size()][]);
     }
     @Test (dataProvider ="Registration" )
-    public void testRegistration() {
+    public void testRegistration(String email,String password, String day, String month,
+                                 String year, String phone, String city , String location) {
         mainPage.clickJoinButton();
-        mainPage.completeFirstPartOfRegistration(Data.email,Data.password);
-        mainPage.completeSecondPartOfRegistration(mainPage.generateNewNumber(Data.nickname,5),Data.day,
-                Data.month, Data.year, Data.phone,Data.location,Data.city);
+        mainPage.completeFirstPartOfRegistration(email,password);
+        mainPage.completeSecondPartOfRegistration(mainPage.generateNewNumber(Data.nickname,5),day,
+                month, year, phone,city,location);
+        mainPage.clickUnselectedCheckbox(Locators.CHECK_BOX_CONFIRMATION);
 
-        WebElement checkboxConfirmation= driver.findElement(Locators.CHECK_BOX_CONFIRMATION);
+        /*WebElement checkboxConfirmation= driver.findElement(Locators.CHECK_BOX_CONFIRMATION);
         if(!checkboxConfirmation.isSelected()){
             checkboxConfirmation.click();
             System.out.println("Checkbox is selected");
         }else {
             Assert.fail("Checkbox is already selected!");
-        }
+        }*/
     }
 
     @Test
