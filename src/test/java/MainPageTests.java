@@ -10,9 +10,34 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
+
+
 public class MainPageTests extends BaseUI {
+    @DataProvider(name = "Registration2")
+    public static Object[][] testRegistration2() {
+        return new Object[][]{
+                //{"11@gmail.com",  true},
+                {"12yahoo.com", false},
+                //{"13@mail.ru",  true},
+        };
+    }
+    @Test (dataProvider ="Registration2" )
+    public void testRegistration(String email,int length, boolean requirement) {
+        System.out.println(email);
+
+        mainPage.clickJoinButton();
+        if(requirement) {
+            mainPage.completeFirstPartOfRegistration(email, Data.password);
+        }else{
+            mainPage.completeFirstPartOfRegistration(email, Data.password);
+        }
+        mainPage.completeSecondPartOfRegistration(mainPage.generateNewNumber(Data.nickname, 5), Data.day,
+                Data.month, Data.year, Data.phone, Data.city, Data.location);
+        mainPage.clickUnselectedCheckbox(Locators.CHECK_BOX_CONFIRMATION);
+    }
+
     @DataProvider(name ="Registration")
-    public static Object[][] testRegistration2() throws Exception{
+    public static Object[][] testRegistration1() throws Exception{
         ArrayList<Object[]> out = new ArrayList<>();
         Files.readAllLines(Paths.get("Registration.csv")).stream().forEach(s-> {
             String[] data = s.split(",");

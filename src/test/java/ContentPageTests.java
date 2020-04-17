@@ -62,10 +62,12 @@ String currentUrl;
 
             mainPage.javaWaitSec(1);
 
-           linksOfArticles=driver.findElements(Locators.LIST_OF_ELEMENTS_BLOG_PAGE);
+
            if (nameOfArticle.contains("How it works")) {
             } else if (nameOfArticle.contains("Kharkov dating agency")) {
             } else if (nameOfArticle.contains("Kiev dating agency")) {
+            } else if (nameOfArticle.contains("Odessa dating agency")) {
+            } else if (nameOfArticle.contains("Mail order girls")) {
             } else if (nameOfArticle.contains("Beautiful urkainian girls")) {
             } else if (nameOfArticle.contains("Real Ukrainian brides")) {
             } else if (nameOfArticle.contains("Eastern European women")) {
@@ -86,6 +88,7 @@ String currentUrl;
                 contentPage.collectAllLinksOfArticles();
 
             }
+            linksOfArticles=driver.findElements(Locators.LIST_OF_ELEMENTS_BLOG_PAGE);
         }
 
     }
