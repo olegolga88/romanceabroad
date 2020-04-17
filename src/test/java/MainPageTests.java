@@ -1,56 +1,40 @@
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
-import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.util.ArrayList;
 import java.util.List;
 
 
 
 public class MainPageTests extends BaseUI {
-    @DataProvider(name = "Registration2")
-    public static Object[][] testRegistration2() {
-        return new Object[][]{
-                //{"11@gmail.com",  true},
-                {"12yahoo.com", false},
-                //{"13@mail.ru",  true},
-        };
-    }
-    @Test (dataProvider ="Registration2" )
-    public void testRegistration(String email,int length, boolean requirement) {
+
+
+
+    @Test (dataProvider = "Registration2",dataProviderClass = DataProviders.class )
+    public void testRegistration2(String email,String nickname, boolean requirement) {
         System.out.println(email);
 
         mainPage.clickJoinButton();
-        if(requirement) {
-            mainPage.completeFirstPartOfRegistration(email, Data.password);
-        }else{
-            mainPage.completeFirstPartOfRegistration(email, Data.password);
+        mainPage.completeFirstPartOfRegistration(email, Data.password);
+        if (!requirement) {
+
+            Assert.assertTrue(driver.findElement(Locators.TOOLTIP_ERROR_MESSAGE_EMAIL).isDisplayed());
+        } else {
+            mainPage.clickNextButton();
+            mainPage.completeSecondPartOfRegistration(nickname, Data.day,
+                    Data.month, Data.year, Data.phone, Data.city, Data.location);
+            mainPage.clickUnselectedCheckbox(Locators.CHECK_BOX_CONFIRMATION);
         }
-        mainPage.completeSecondPartOfRegistration(mainPage.generateNewNumber(Data.nickname, 5), Data.day,
-                Data.month, Data.year, Data.phone, Data.city, Data.location);
-        mainPage.clickUnselectedCheckbox(Locators.CHECK_BOX_CONFIRMATION);
     }
 
-    @DataProvider(name ="Registration")
-    public static Object[][] testRegistration1() throws Exception{
-        ArrayList<Object[]> out = new ArrayList<>();
-        Files.readAllLines(Paths.get("Registration.csv")).stream().forEach(s-> {
-            String[] data = s.split(",");
-            out.add(new Object[]{data[0], data[1], data[2], data[3], data[4], data[5],
-                    data[6], data[7]});
-        });
-        return out.toArray(new Object[out.size()][]);
-    }
-    @Test (dataProvider ="Registration" )
+
+
+    @Test (dataProvider ="Registration",dataProviderClass = DataProviders.class)
     public void testRegistration(String email,String password, String day, String month,
                                  String year, String phone, String city , String location) {
         mainPage.clickJoinButton();
         mainPage.completeFirstPartOfRegistration(email,password);
+        mainPage.clickNextButton();
         mainPage.completeSecondPartOfRegistration(mainPage.generateNewNumber(Data.nickname,5),day,
                 month, year, phone,city,location);
         mainPage.clickUnselectedCheckbox(Locators.CHECK_BOX_CONFIRMATION);

@@ -1,12 +1,17 @@
 public class Data {
     //Registration Data
-    public static final String email = "11@gmail.com";
+    public static final String email1 = "11@gmail.com";
+    public static final String email2 = "12yahoo.com";
+    public static final String email3 = "13@mail.ru";
     public static final String password = "338377377m";
-    public static final String nickname = "paul444";
+    public static final String nickname1part ="Greg";
+    public static final String nickname =MainPage.generateNewNumber(nickname1part,Data.lengthSecondPartOfNickName);
     public static final String phone = "3863863636";
+    public static final int lengthSecondPartOfNickName = 5;
+
+
     public static final String city = "Sydney";
     public static final String location= "State of New South Wales, Australia";
-
     public static final String day= "1";
     public static final String month="May";
     public static final String year="1998";

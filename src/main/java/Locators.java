@@ -27,6 +27,7 @@ public static final By H1_TITLE= By.xpath("//h1");
     public static final By AUTO_FILLING_FORM_LOCATION = By.xpath("//input[@name='region_name']");
     public static final By CHECK_BOX_CONFIRMATION = By.cssSelector("input#confirmation");
     public static final By LIST_VALUE_LOCATION = By.xpath("//div[@class='dropdown dropdown_location']//ul//li");
+    public static final By TOOLTIP_ERROR_MESSAGE_EMAIL = By.xpath("//div[@class='tooltip']");
 
 
     //Search Page
