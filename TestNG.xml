@@ -11,7 +11,7 @@
             </run>
         </groups>
         <classes>
-            <class name="SearchPageTests">
+            <class name="com.romanceabroad.ui.SearchPageTests">
                 <methods>
                     <include name=".*TestCase11.*"/>
                     <include name=".*Assert.*"/>
@@ -30,7 +30,7 @@
             </run>
         </groups>
         <classes>
-            <class name="SearchPageTests"/>
+            <class name="com.romanceabroad.ui.SearchPageTests"/>
         </classes>
     </test>
     <test name="ChromeTestCases">
@@ -45,7 +45,7 @@
         </groups>
 
         <classes>
-            <class name="SearchPageTests">
+            <class name="com.romanceabroad.ui.SearchPageTests">
             <methods>
                 <include name=".*TestCase11.*"/>
                 <include name=".*Assert.*"/>

@@ -1,5 +1,6 @@
+package com.romanceabroad.ui;
+
 import org.openqa.selenium.WebElement;
-import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.util.List;
@@ -14,7 +15,7 @@ public class MediaPageTests extends BaseUI {
         mediaPage.clickMediaPageLink();
         currentUrlMedia = driver.getCurrentUrl();
         System.out.println(currentUrlMedia);
-        //Assert.assertEquals(currentUrlMedia, Data.expectedUrlMedia);
+        //Assert.assertEquals(currentUrlMedia, com.romanceabroad.ui.Data.expectedUrlMedia);
         softAssert.assertEquals(currentUrlMedia, Data.expectedUrlMedia,"Url is wrong");
         softAssert.assertAll();
 

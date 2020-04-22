@@ -1,3 +1,6 @@
+package com.romanceabroad.ui;
+
+import com.romanceabroad.ui.*;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -8,10 +11,9 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 import org.testng.asserts.SoftAssert;
-import io.github.bonigarcia.wdm.WebDriverManager;
+
 import java.lang.reflect.Method;
 import java.net.MalformedURLException;
-import java.net.URL;
 
 public class BaseUI {
     WebDriver driver;

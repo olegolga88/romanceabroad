@@ -1,3 +1,5 @@
+package com.romanceabroad.ui;
+
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
@@ -39,7 +41,7 @@ public class MainPageTests extends BaseUI {
                 month, year, phone,city,location);
         mainPage.clickUnselectedCheckbox(Locators.CHECK_BOX_CONFIRMATION);
 
-        /*WebElement checkboxConfirmation= driver.findElement(Locators.CHECK_BOX_CONFIRMATION);
+        /*WebElement checkboxConfirmation= driver.findElement(com.romanceabroad.ui.Locators.CHECK_BOX_CONFIRMATION);
         if(!checkboxConfirmation.isSelected()){
             checkboxConfirmation.click();
             System.out.println("Checkbox is selected");

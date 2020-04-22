@@ -1,3 +1,5 @@
+package com.romanceabroad.ui;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
@@ -44,7 +46,7 @@ public class Conditions extends BaseUI {
 
     /* @Test
      public void test4() {
-         WebElement tabSearch = driver.findElement(Locators.LINK_SEARCH);
+         WebElement tabSearch = driver.findElement(com.romanceabroad.ui.Locators.LINK_SEARCH);
          if (tabSearch.getText().contains("PRETTY WOMEN")) {
              tabSearch.click();
          } else {
@@ -53,7 +55,7 @@ public class Conditions extends BaseUI {
      }
      @Test
      public void test5() {
-         WebElement tabSearch = driver.findElement(Locators.LINK_SEARCH);
+         WebElement tabSearch = driver.findElement(com.romanceabroad.ui.Locators.LINK_SEARCH);
          if (tabSearch.isDisplayed()) {
              tabSearch.click();
          } else {
@@ -65,7 +67,7 @@ public class Conditions extends BaseUI {
          mainPage.clickJoinButton();
          mainPage.completeFirstPartOfRegistration();
          mainPage.completeSecondPartOfRegistration();
-         WebElement checkbox=driver.findElement(Locators.CHECK_BOX_CONFIRMATION);
+         WebElement checkbox=driver.findElement(com.romanceabroad.ui.Locators.CHECK_BOX_CONFIRMATION);
          if(!checkbox.isSelected()){
              checkbox.click();
              System.out.println("Checkbox is selected");

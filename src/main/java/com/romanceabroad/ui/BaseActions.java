@@ -1,11 +1,11 @@
+package com.romanceabroad.ui;
+
 import org.apache.commons.lang3.RandomStringUtils;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
-import javax.swing.*;
 
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -36,6 +36,7 @@ public class BaseActions {
         select.selectByVisibleText(text);
     }
 
+
     public void getDropDownListByValue(By locator, String value) {
         Select select = new Select(driver.findElement(locator));
         select.selectByValue(value);
@@ -45,6 +46,10 @@ public class BaseActions {
     public void getDropDownListByValue(WebElement element, String value) {
         Select select = new Select(element);
         select.selectByValue(value);
+    }
+    public void getDropDownListByText(WebElement element, String text) {
+        Select select = new Select(element);
+        select.selectByVisibleText(text);
     }
 
 

@@ -1,5 +1,7 @@
+package com.romanceabroad.ui;
+
 public class Data {
-    //Registration Data
+    //Registration com.romanceabroad.ui.Data
     public static final String email1 = "11@gmail.com";
     public static final String email2 = "12yahoo.com";
     public static final String email3 = "13@mail.ru";
