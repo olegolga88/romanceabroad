@@ -229,7 +229,8 @@ public class BaseActions {
             }
         }
     }
-public String getAnyTitle(){
+
+    public String getAnyTitle(){
    String title= driver.findElement(Locators.H1_TITLE).getText();
    return title;
 }

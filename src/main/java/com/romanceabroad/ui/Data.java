@@ -41,5 +41,14 @@ public class Data {
     public static final String subject = "Meeting";
 public static final String massage= "At what time can we meet";
 public static final String captcha="65059";
+
+//Media(Photos) Page
+    public static final String expectedTitleAllPhotos= "Ukrainian women photos";
+    public static final String expectedTitleGallery= "Gallery";
+    public static final String expectedTitlePhotoGallery= "Photo Gallery";
+    public static final String expectedTitleVideo= "Video gallery";
+    public static final String expectedTitleAlbums= "Gallery albums";
+
+
 }
 

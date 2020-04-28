@@ -8,7 +8,6 @@ public class MediaPage extends BaseActions {
         super(driver, wait);
     }
 
-    String currentUrlMedia;
 
     public void clickMediaPageLink() {
         driver.findElement(Locators.LINK_MEDIA).click();

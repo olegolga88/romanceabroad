@@ -5,13 +5,16 @@ import org.openqa.selenium.WebElement;
 
 public class Locators {
 public static final By H1_TITLE= By.xpath("//h1");
-    //Media Page
+    //Photos Page
     public static final By LINK_MEDIA = By.cssSelector("a[href='https://romanceabroad.com/media/index']");
     public static final By BUTTON_ALL = By.xpath("//a[@href='https://romanceabroad.com/media/all']");
     public static final By BUTTON_PHOTO = By.xpath("//a[@href='https://romanceabroad.com/media/photo']");
     public static final By BUTTON_ALBUMS = By.xpath("//a[@href='https://romanceabroad.com/media/albums']");
     public static final By BUTTON_VIDEO = By.xpath("//a[@href='https://romanceabroad.com/media/video']");
-    public static final By LIST_OF_BUTTONS_MEDIA = By.xpath("//ul[@class='b-tabs']//li");
+    //public static final By LIST_OF_BUTTONS_MEDIA = By.xpath("//ul[@class='b-tabs']//li");
+    public static final By LIST_OF_BUTTONS_MEDIA = By.xpath("//ul[@id='gallery_filters']//a");
+
+
 
     // com.romanceabroad.ui.MainPage-Registration
     public static final By BUTTON_REGISTRATION = By.xpath("//button[@id='show-registration-block']");
