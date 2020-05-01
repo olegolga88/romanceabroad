@@ -30,12 +30,14 @@ public class MediaPageTests extends BaseUI {
         mediaPage.clickMediaPageLink();
         currentUrlMedia = driver.getCurrentUrl();
         System.out.println(currentUrlMedia);
-
+wait.until(ExpectedConditions.presenceOfElementLocated(Locators.LIST_OF_BUTTONS_MEDIA));
         List<WebElement> links = driver.findElements(Locators.LIST_OF_BUTTONS_MEDIA);
         System.out.println(links.size());
 
-        for (int i = 0; i < links.size(); i++) {
-            mediaPage.ajaxClick(links.get(i));
+        for (int i = 1; i < links.size(); i++) {
+
+            mediaPage.ajaxClick(Locators.LIST_OF_BUTTONS_MEDIA);
+mediaPage.javaWaitSec(10);
             String info = links.get(i).getText();
             System.out.println(info);
 
@@ -49,11 +51,14 @@ public class MediaPageTests extends BaseUI {
     @Test
     public void testUserTabs() {
         mediaPage.clickMediaPageLink();
+        wait.until(ExpectedConditions.presenceOfElementLocated(Locators.TITLE_OF_PAGE));
         List<WebElement> userTabs = driver.findElements(Locators.LIST_OF_BUTTONS_MEDIA);
+
         actualTitle = mediaPage.getAnyTitle();
         Assert.assertEquals(actualTitle, Data.expectedTitleAllPhotos);
         for (int i = 0; i < userTabs.size(); i++) {
             userTabs.get(i).click();
+            wait.until(ExpectedConditions.presenceOfElementLocated(Locators.TITLE_OF_PAGE));
             actualTitle = mediaPage.getAnyTitle();
 
             if (i == 0) {
@@ -66,7 +71,32 @@ public class MediaPageTests extends BaseUI {
                 Assert.assertEquals(actualTitle, Data.expectedTitleAlbums);
             }
             userTabs = driver.findElements(Locators.LIST_OF_BUTTONS_MEDIA);
-        }}
+        }
+    }
+        @Test
+        public void testUserTabs1() {
+            mediaPage.clickMediaPageLink();
+            wait.until(ExpectedConditions.presenceOfElementLocated(Locators.TITLE_OF_PAGE));
+            List<WebElement> userTabs = driver.findElements(Locators.LIST_OF_BUTTONS_MEDIA);
+
+            actualTitle = mediaPage.getAnyTitle();
+            Assert.assertEquals(actualTitle, Data.expectedTitleAllPhotos);
+            for (int i = 0; i < userTabs.size(); i++) {
+                userTabs.get(i).click();
+                wait.until(ExpectedConditions.presenceOfElementLocated(Locators.TITLE_OF_PAGE));
+                actualTitle = mediaPage.getAnyTitle();
+                if (actualTitle.contains(Data.expectedTitleGallery) ||
+                        actualTitle.contains(Data.expectedTitlePhotoGallery) ||
+                        actualTitle.contains(Data.expectedTitleVideo) ||
+                        actualTitle.contains(Data.expectedTitleAlbums)) {
+
+
+                    System.out.println("Title is valid: " + actualTitle);
+                }else{
+                    Assert.fail("Title is not valid");
+                }
+            }
+        }
 
 
 
