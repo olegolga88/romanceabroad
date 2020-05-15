@@ -57,9 +57,9 @@ public class BaseActions {
         WebElement element = driver.findElement(locator);
         boolean elementDisplayed = element.isDisplayed();
         if (element.isDisplayed()) {
-            System.out.println(elementDisplayed + "" + "element is displayed");
+            System.out.println(elementDisplayed + " " + "element is displayed");
         } else {
-            System.out.println(elementDisplayed + "" + "element is not displayed");
+            System.out.println(elementDisplayed + " " + "element is not displayed");
         }
     }
 
@@ -131,14 +131,22 @@ public class BaseActions {
         }
     }
 
-    public void scrollToBottomOfPage() {
-        ((JavascriptExecutor) driver).executeScript("window scrollTo(0,document.body.scrollHeight);");
-
+    // Scrolls
+    public void scrollToBottomOfPage(){
+        ((JavascriptExecutor)
+                driver).executeScript("window.scrollTo(0, document.body.scrollHeight);");
     }
-
-    public void ajaxScroll(WebElement element) {
-        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
-        wait.until(ExpectedConditions.elementToBeClickable(element));
+    public void ajaxScroll(WebElement element){
+        ((JavascriptExecutor)
+                driver).executeScript("arguments[0].scrollIntoView(true);", element);
+    }
+    public void ajaxScroll(By by, int index) {
+        wait.until(ExpectedConditions.presenceOfElementLocated(by));
+        ajaxScroll(driver.findElements(by).get(index));
+    }
+    public void ajaxScrollUp(){
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("window.scrollBy(0,-250)", "");
     }
 
     public void javaWait(int ms) {

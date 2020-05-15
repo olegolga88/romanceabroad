@@ -6,17 +6,17 @@ public class Data {
     public static final String email2 = "12yahoo.com";
     public static final String email3 = "13@mail.ru";
     public static final String password = "338377377m";
-    public static final String nickname1part ="Greg";
-    public static final String nickname =MainPage.generateNewNumber(nickname1part,Data.lengthSecondPartOfNickName);
+    public static final String nickname1part = "Greg";
+    public static final String nickname = MainPage.generateNewNumber(nickname1part, Data.lengthSecondPartOfNickName);
     public static final String phone = "3863863636";
     public static final int lengthSecondPartOfNickName = 5;
 
 
     public static final String city = "Sydney";
-    public static final String location= "State of New South Wales, Australia";
-    public static final String day= "1";
-    public static final String month="May";
-    public static final String year="1998";
+    public static final String location = "State of New South Wales, Australia";
+    public static final String day = "1";
+    public static final String month = "May";
+    public static final String year = "1998";
 
 
     public static final String mainUrl = "https://romanceabroad.com";
@@ -35,20 +35,21 @@ public class Data {
     public static final String expectedUrlPhotos = "https://romanceabroad.com/media/index";
 
     //Contact Us
-    public static final String reason= "Other";
-    public static final String yourName= "Olga";
+    public static final String reason = "Other";
+    public static final String yourName = "Olga";
     public static final String yourEmail = "12@gmail.com";
     public static final String subject = "Meeting";
-public static final String massage= "At what time can we meet";
-public static final String captcha="65059";
+    public static final String massage = "At what time can we meet";
+    public static final String captcha = "65059";
 
-//Media(Photos) Page
-    public static final String expectedTitleAllPhotos= "Ukrainian women photos";
-    public static final String expectedTitleGallery= "Gallery";
-    public static final String expectedTitlePhotoGallery= "Photo gallery";
-    public static final String expectedTitleVideo= "Video gallery";
-    public static final String expectedTitleAlbums= "Gallery albums";
-
-
+    //Media(Photos) Page
+    public static final String expectedTitleAllPhotos = "Ukrainian women photos";
+    public static final String expectedTitleGallery = "Gallery";
+    public static final String expectedTitlePhotoGallery = "Photo gallery";
+    public static final String expectedTitleVideo = "Video gallery";
+    public static final String expectedTitleAlbums = "Gallery albums";
+    public static final String textMedia = "On our website you have access to photos of all different kinds of women.";
+    public static final String expectedTitleContactUs = "Contact administrator";
+    public static final String expectedTitleSiteMap = "Site map ";
 }
 

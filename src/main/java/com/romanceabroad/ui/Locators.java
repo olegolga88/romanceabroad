@@ -13,7 +13,11 @@ public static final By H1_TITLE= By.xpath("//h1");
     public static final By BUTTON_VIDEO = By.xpath("//a[@href='https://romanceabroad.com/media/video']");
     //public static final By LIST_OF_BUTTONS_MEDIA = By.xpath("//ul[@class='b-tabs']//li");
     public static final By LIST_OF_BUTTONS_MEDIA = By.xpath("//ul[@id='gallery_filters']//a");
-
+public static final By FLATTY_BLOCK_ALBUMS_MEDIA = By.xpath("//div[@class='g-flatty-block']");
+    public static final By ALBUMS_TITLE_IMAGES_MEDIA= By.xpath("//span[@data-click='album']");
+    public static final By INNER_CONTENT_VIDEO_MEDIA= By.xpath("//div[@class='main-inner-content']");
+////span[@id='gallery_media_sorter']//select[@class='form-control']
+ public static final By FOTTER_MEDIA_PAGE=By.xpath("//footer//div[@class='container']//li[@class='footer-menu-list-group-item']");
 
 
     // com.romanceabroad.ui.MainPage-Registration
