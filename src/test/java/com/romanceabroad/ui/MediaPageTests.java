@@ -135,27 +135,26 @@ public class MediaPageTests extends BaseUI {
     @Test
     public void testUserTabs3() {
         mediaPage.clickMediaPageLink();
-        mediaPage.ajaxScroll(Locators.FOTTER_MEDIA_PAGE, 4);
-        List<WebElement> userFooter = driver.findElements(Locators.FOTTER_MEDIA_PAGE);
+        mediaPage.ajaxScroll(Locators.FOOTER_MEDIA_PAGE, 4);
+        List<WebElement> userFooter = driver.findElements(Locators.FOOTER_MEDIA_PAGE);
 
-        wait.until(ExpectedConditions.presenceOfElementLocated(Locators.FOTTER_MEDIA_PAGE));
+        wait.until(ExpectedConditions.presenceOfElementLocated(Locators.FOOTER_MEDIA_PAGE));
 
         System.out.println(userFooter.size());
         for (int i = 0; i < userFooter.size()-1; i++) {
             String info=userFooter.get(i).getText();
-            System.out.println(info);
+           System.out.println(info);
             mediaPage.javaWaitSec(3);
-            userFooter.get(i).click();
-            wait.until(ExpectedConditions.elementToBeClickable(Locators.FOTTER_MEDIA_PAGE));
+            String getLink = userFooter.get(i).getAttribute("href");
+            System.out.println(getLink+"!!!!!");
+            mediaPage.ajaxClick(userFooter.get(i));
+            wait.until(ExpectedConditions.elementToBeClickable(Locators.FOOTER_MEDIA_PAGE));
+            if(!getLink.contains("news")){
             actualTitle = mediaPage.getAnyTitle();
-            /*if (i == 0) {
-                Assert.assertEquals(actualTitle, Data.expectedTitleContactUs);
-            } else if (i == 1) {
-                Assert.assertEquals(actualTitle, Data.expectedTitleSiteMap);
-            } else if (i == 2) {*/
-            userFooter = driver.findElements(Locators.FOTTER_MEDIA_PAGE);
+            }
+            userFooter = driver.findElements(Locators.FOOTER_MEDIA_PAGE);
 
-        }
+        }}
     }
-}
+
 

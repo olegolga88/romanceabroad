@@ -149,5 +149,27 @@ public class MainPageTests extends BaseUI {
     mainPage.checkLinksOnWebPage("//a","href");
     mainPage.checkLinksOnWebPage("//img","src");
     }
+
+    @Test (dataProvider = "SignInNegative",dataProviderClass = DataProviders.class )
+    public void testSignIn(String email,String password){
+        mainPage.clickSignInButton();
+        wait.until(ExpectedConditions.presenceOfElementLocated(Locators.TEXT_FIELD_EMAIL_SIGN_IN));
+        driver.findElement(Locators.TEXT_FIELD_EMAIL_SIGN_IN).sendKeys(email);
+        wait.until(ExpectedConditions.presenceOfElementLocated(Locators.TEXT_FIELD_PASSWORD_SIGN_IN));
+        driver.findElement(Locators.TEXT_FIELD_PASSWORD_SIGN_IN).sendKeys(password);
+        wait.until(ExpectedConditions.elementToBeClickable(Locators.BUTTON_SIGN_IN));
+        driver.findElement(Locators.BUTTON_SIGN_IN).click();
+        driver.getCurrentUrl();
+        WebElement errorMessage=driver.findElement(Locators.ERROR_MESSAGE_EMAIL_OR_PASSWORD_INCORRECT);
+        if (errorMessage.isDisplayed()){
+            System.out.println("Email or password incorrect");
+        } else{
+            Assert.fail("We can sign in");
+        }
+
+
+
+    }
 }
+
 

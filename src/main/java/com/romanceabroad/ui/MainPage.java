@@ -25,10 +25,12 @@ public class MainPage extends BaseActions {
 
 
     }
-    public void clickNextButton(){
+
+    public void clickNextButton() {
         wait.until(ExpectedConditions.elementToBeClickable(Locators.BUTTON_NEXT));
         driver.findElement(Locators.BUTTON_NEXT).click();
     }
+
 
     public void completeSecondPartOfRegistration(String nickname, String day, String month,
                                                  String year, String phone, String location, String city) {
@@ -49,8 +51,15 @@ public class MainPage extends BaseActions {
         clickValueOfList(Locators.LIST_VALUE_LOCATION, location);
 
     }
-}
 
+    public void clickSignInButton() {
+        wait.until(ExpectedConditions.elementToBeClickable(Locators.BUTTON_SIGN_IN_MAIN_PAGE));
+        driver.findElement(Locators.BUTTON_SIGN_IN_MAIN_PAGE).click();
+
+    }
+
+
+}
 
 
 

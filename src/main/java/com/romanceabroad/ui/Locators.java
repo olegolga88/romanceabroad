@@ -17,7 +17,7 @@ public static final By FLATTY_BLOCK_ALBUMS_MEDIA = By.xpath("//div[@class='g-fla
     public static final By ALBUMS_TITLE_IMAGES_MEDIA= By.xpath("//span[@data-click='album']");
     public static final By INNER_CONTENT_VIDEO_MEDIA= By.xpath("//div[@class='main-inner-content']");
 ////span[@id='gallery_media_sorter']//select[@class='form-control']
- public static final By FOTTER_MEDIA_PAGE=By.xpath("//footer//div[@class='container']//li[@class='footer-menu-list-group-item']");
+ public static final By FOOTER_MEDIA_PAGE=By.xpath("//li[@class='footer-menu-list-group-item']//a");
 
 
     // com.romanceabroad.ui.MainPage-Registration
@@ -37,6 +37,15 @@ public static final By FLATTY_BLOCK_ALBUMS_MEDIA = By.xpath("//div[@class='g-fla
     public static final By CHECK_BOX_CONFIRMATION = By.cssSelector("input#confirmation");
     public static final By LIST_VALUE_LOCATION = By.xpath("//div[@class='dropdown dropdown_location']//ul//li");
     public static final By TOOLTIP_ERROR_MESSAGE_EMAIL = By.xpath("//div[@class='tooltip']");
+
+    //Main Page SignIn
+    public static final By BUTTON_SIGN_IN_MAIN_PAGE= By.xpath("//a[@id='ajax_login_link']");
+    public static final By TEXT_FIELD_EMAIL_SIGN_IN = By.xpath("//input[@name='email']");
+    public static final By TEXT_FIELD_PASSWORD_SIGN_IN= By.xpath("//input[@name='password']");
+    public static final By BUTTON_SIGN_IN= By.xpath("//button[@name='logbtn']");
+
+
+    public static final By ERROR_MESSAGE_EMAIL_OR_PASSWORD_INCORRECT= By.xpath("//div[@class='error alert-danger alert-warning_pop_']");
 
 
     //Search Page
