@@ -150,21 +150,20 @@ public class MainPageTests extends BaseUI {
     mainPage.checkLinksOnWebPage("//img","src");
     }
 
-    @Test (dataProvider = "SignInNegative",dataProviderClass = DataProviders.class )
-    public void testSignIn(String email,String password){
+    @Test (dataProvider = "SignIn Negative",dataProviderClass = DataProviders.class )
+    public void testSignInNegative(String email,String password,boolean requirement){
         mainPage.clickSignInButton();
-        wait.until(ExpectedConditions.presenceOfElementLocated(Locators.TEXT_FIELD_EMAIL_SIGN_IN));
-        driver.findElement(Locators.TEXT_FIELD_EMAIL_SIGN_IN).sendKeys(email);
-        wait.until(ExpectedConditions.presenceOfElementLocated(Locators.TEXT_FIELD_PASSWORD_SIGN_IN));
-        driver.findElement(Locators.TEXT_FIELD_PASSWORD_SIGN_IN).sendKeys(password);
-        wait.until(ExpectedConditions.elementToBeClickable(Locators.BUTTON_SIGN_IN));
-        driver.findElement(Locators.BUTTON_SIGN_IN).click();
+        mainPage.inputDataSignIn(email,password);
+
         driver.getCurrentUrl();
-        WebElement errorMessage=driver.findElement(Locators.ERROR_MESSAGE_EMAIL_OR_PASSWORD_INCORRECT);
-        if (errorMessage.isDisplayed()){
-            System.out.println("Email or password incorrect");
-        } else{
-            Assert.fail("We can sign in");
+
+        if(!requirement) {
+            WebElement errorMessage = driver.findElement(Locators.ERROR_MESSAGE_EMAIL_OR_PASSWORD_INCORRECT);
+            Assert.assertTrue(errorMessage.isDisplayed());
+            System.out.println("Email or password is incorrect");
+        }else{
+            mainPage.inputDataSignIn(email,password);
+
         }
 
 

@@ -58,7 +58,15 @@ public class MainPage extends BaseActions {
 
     }
 
+public void inputDataSignIn(String email,String password){
+    wait.until(ExpectedConditions.presenceOfElementLocated(Locators.TEXT_FIELD_EMAIL_SIGN_IN));
+    driver.findElement(Locators.TEXT_FIELD_EMAIL_SIGN_IN).sendKeys(email);
+    wait.until(ExpectedConditions.presenceOfElementLocated(Locators.TEXT_FIELD_PASSWORD_SIGN_IN));
+    driver.findElement(Locators.TEXT_FIELD_PASSWORD_SIGN_IN).sendKeys(password);
+    wait.until(ExpectedConditions.elementToBeClickable(Locators.BUTTON_SIGN_IN));
+    driver.findElement(Locators.BUTTON_SIGN_IN).click();
 
+}
 }
 
 
