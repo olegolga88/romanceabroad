@@ -133,7 +133,7 @@ public class MediaPageTests extends BaseUI {
     }
 
     @Test
-    public void testUserTabs3() {
+    public void testUserTabsFooter() {
         mediaPage.clickMediaPageLink();
         mediaPage.ajaxScroll(Locators.FOOTER_MEDIA_PAGE, 4);
         List<WebElement> userFooter = driver.findElements(Locators.FOOTER_MEDIA_PAGE);
@@ -152,6 +152,18 @@ public class MediaPageTests extends BaseUI {
             if(!getLink.contains("news")){
             actualTitle = mediaPage.getAnyTitle();
             }
+           if (i==0){
+               Assert.assertEquals(actualTitle,Data.expectedTitleContactUsFooter);
+            }else if(i==1){
+               Assert.assertEquals(actualTitle,Data.expectedTitleSiteMapFooter);
+            }else if(i==2){
+               Assert.assertEquals(actualTitle,Data.expectedTitleHowItWorksFooter);
+           }else if(i==4){
+               Assert.assertEquals(actualTitle,Data.expectedTitlePolicyFooter);
+           }else if(i==5){
+               Assert.assertEquals(actualTitle,Data.expectedTitleTermsOfUseFooter);
+           }
+
             userFooter = driver.findElements(Locators.FOOTER_MEDIA_PAGE);
 
         }}

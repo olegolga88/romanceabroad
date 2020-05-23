@@ -7,6 +7,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import static com.romanceabroad.ui.Locators.DROP_DOWN_LIST_MAX_AGE;
 
@@ -52,9 +53,11 @@ public class SearchPageTests extends BaseUI {
     @Test(priority = 3, enabled = testCase13, groups = {"admin", "user"})
     public void sizeOfDropDownListTestCase13() {
         searchPage.clickLinkSearch();
+        driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
         int sizeOfDropDownListSortBy = searchPage.getSizeDropDownList(Locators.DROP_DOWN_LIST_SORT_BY);
         System.out.println(sizeOfDropDownListSortBy);
         for (int i = 0; i < sizeOfDropDownListSortBy; i++) {
+
             searchPage.selectItemDropDownRandomOption(Locators.DROP_DOWN_LIST_SORT_BY, "Sort By");
             mainPage.javaWaitSec(3);
         }
@@ -63,7 +66,7 @@ public class SearchPageTests extends BaseUI {
     @Test(priority = 4, enabled = testCase14, groups = {"admin", "user"})
     public void sizeOfDropDownListMinAgeTestCase14() {
         searchPage.clickLinkSearch();
-
+        driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
         int sizeOfDropDownListSortBy = searchPage.getSizeDropDownList(Locators.DROP_DOWN_LIST_MIN_AGE);
         System.out.println(sizeOfDropDownListSortBy);
         for (int i = 0; i < sizeOfDropDownListSortBy; i++) {
@@ -82,6 +85,7 @@ public class SearchPageTests extends BaseUI {
         softAssert.assertEquals(currentUrlSearch, Data.expectedUrlSearch, "Url is wrong ");
         searchPage.javaWaitSec(3);
         WebElement dropDownListSortBy = driver.findElement(Locators.DROP_DOWN_LIST_SORT_BY);
+        driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
         searchPage.getDropDownListByValue(dropDownListSortBy, "name");
         softAssert.assertAll();
 

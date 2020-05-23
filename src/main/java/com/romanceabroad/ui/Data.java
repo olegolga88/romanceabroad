@@ -51,5 +51,15 @@ public class Data {
     public static final String textMedia = "On our website you have access to photos of all different kinds of women.";
     public static final String expectedTitleContactUs = "Contact administrator";
     public static final String expectedTitleSiteMap = "Site map ";
+
+    //Media Page Footer
+    public static final String expectedTitleContactUsFooter= "Contact administrator";
+    public static final String expectedTitleSiteMapFooter= "Site map";
+    public static final String expectedTitleHowItWorksFooter= "Ukrainian women for marriage";
+    public static final String expectedTitlePolicyFooter= "Privacy Policy";
+    public static final String expectedTitleTermsOfUseFooter= "Terms of use";
+
+
+
 }
 
