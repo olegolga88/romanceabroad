@@ -35,8 +35,8 @@ public class Conditions extends BaseUI {
 
     @Test
     public void test3() {
-        boolean requirenment = false;
-        if (!requirenment) {
+        boolean requirement = false;
+        if (!requirement) {
             System.out.println("Boolean is tru");
         } else {
             System.out.println("Boolean is false");

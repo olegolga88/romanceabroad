@@ -1,6 +1,6 @@
 package com.romanceabroad.ui;
 
-import com.romanceabroad.ui.*;
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -16,9 +16,9 @@ import java.lang.reflect.Method;
 import java.net.MalformedURLException;
 
 public class BaseUI {
-    WebDriver driver;
+    public WebDriver driver;
     WebDriverWait wait;
-    MainPage mainPage;
+    public MainPage mainPage;
     SearchPage searchPage;
     BlogPage blogPage;
     BookTourPage bookTourPage;
@@ -34,22 +34,22 @@ public class BaseUI {
         // Check if parameter passed from TestNG is 'firefox'
         if (browser.equalsIgnoreCase("firefox")) {
             // Create firefox instance
-            System.setProperty("webdriver.gecko.driver", "geckodriver.exe");
+            WebDriverManager.firefoxdriver().setup();
             driver = new FirefoxDriver();
         }
         // Check if parameter passed as 'chrome'
         else if (browser.equalsIgnoreCase("chrome")) {
             // Set path to chromedriver.exe
-            System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
+            WebDriverManager.chromedriver().setup();
             // Create chrome instance
             driver = new ChromeDriver();
             driver.get("chrome://settings/clearBrowserData");
         } else if (browser.equalsIgnoreCase("IE")) {
-            System.setProperty("webdriver.ie.driver", "IEDriverServer.exe");
+            WebDriverManager.iedriver().setup();
             driver = new InternetExplorerDriver();
             driver.manage().deleteAllCookies();
         } else {
-            System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
+            WebDriverManager.chromedriver().setup();
             driver = new ChromeDriver();
             driver.get("chrome://settings/clearBrowserData");
         }

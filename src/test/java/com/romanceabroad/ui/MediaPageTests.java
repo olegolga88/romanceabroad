@@ -1,12 +1,8 @@
 package com.romanceabroad.ui;
-
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-
 import java.util.List;
 
 public class MediaPageTests extends BaseUI {
@@ -22,8 +18,6 @@ public class MediaPageTests extends BaseUI {
         //Assert.assertEquals(currentUrlMedia, com.romanceabroad.ui.Data.expectedUrlMedia);
         softAssert.assertEquals(currentUrlMedia, Data.expectedUrlMedia, "Url is wrong");
         softAssert.assertAll();
-
-
     }
 
     @Test
@@ -40,7 +34,6 @@ public class MediaPageTests extends BaseUI {
             wait.until(ExpectedConditions.elementToBeClickable(Locators.LIST_OF_BUTTONS_MEDIA));
             links = driver.findElements(Locators.LIST_OF_BUTTONS_MEDIA);
         }
-
     }
 
 
@@ -86,7 +79,6 @@ public class MediaPageTests extends BaseUI {
                     actualTitle.contains(Data.expectedTitlePhotoGallery) ||
                     actualTitle.contains(Data.expectedTitleVideo) ||
                     actualTitle.contains(Data.expectedTitleAlbums)) {
-
 
                 System.out.println("Title is valid: " + actualTitle);
             } else {

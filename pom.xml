@@ -80,6 +80,17 @@
         <version>6.14.3</version>
         <scope>compile</scope>
     </dependency>
+    <!-- video recording -->
+    <dependency>
+
+        <groupId>com.automation-remarks</groupId>
+
+        <artifactId>video-recorder-testng</artifactId>
+
+        <version>1.0</version>
+
+    </dependency>
+
 
 </dependencies>
 

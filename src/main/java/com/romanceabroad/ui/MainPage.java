@@ -19,6 +19,7 @@ public class MainPage extends BaseActions {
     public void completeFirstPartOfRegistration(String email, String password) {
 
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(Locators.TEXT_FIELD_EMAIL)));
         driver.findElement(Locators.TEXT_FIELD_EMAIL).sendKeys(email);
         wait.until(ExpectedConditions.visibilityOf(driver.findElement(Locators.TEXT_FIELD_PASSWORD)));
         driver.findElement(Locators.TEXT_FIELD_PASSWORD).sendKeys(password);
@@ -58,15 +59,15 @@ public class MainPage extends BaseActions {
 
     }
 
-public void inputDataSignIn(String email,String password){
-    wait.until(ExpectedConditions.presenceOfElementLocated(Locators.TEXT_FIELD_EMAIL_SIGN_IN));
-    driver.findElement(Locators.TEXT_FIELD_EMAIL_SIGN_IN).sendKeys(email);
-    wait.until(ExpectedConditions.presenceOfElementLocated(Locators.TEXT_FIELD_PASSWORD_SIGN_IN));
-    driver.findElement(Locators.TEXT_FIELD_PASSWORD_SIGN_IN).sendKeys(password);
-    wait.until(ExpectedConditions.elementToBeClickable(Locators.BUTTON_SIGN_IN));
-    driver.findElement(Locators.BUTTON_SIGN_IN).click();
+    public void inputDataSignIn(String email, String password) {
+        wait.until(ExpectedConditions.presenceOfElementLocated(Locators.TEXT_FIELD_EMAIL_SIGN_IN));
+        driver.findElement(Locators.TEXT_FIELD_EMAIL_SIGN_IN).sendKeys(email);
+        wait.until(ExpectedConditions.presenceOfElementLocated(Locators.TEXT_FIELD_PASSWORD_SIGN_IN));
+        driver.findElement(Locators.TEXT_FIELD_PASSWORD_SIGN_IN).sendKeys(password);
+        wait.until(ExpectedConditions.elementToBeClickable(Locators.BUTTON_SIGN_IN));
+        driver.findElement(Locators.BUTTON_SIGN_IN).click();
 
-}
+    }
 }
 
 

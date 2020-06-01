@@ -49,7 +49,7 @@ public class DataProviders {
     }
 
 
-    @DataProvider(name ="SignIn Negative")
+    @DataProvider(name ="SignIn")
     public static Object[][] testSignInNegative() {
         return new Object[][]{
                 {Data.email1, Data.password, true},
