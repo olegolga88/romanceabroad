@@ -1,14 +1,14 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
 
-<suite name="TestSuite" parallel="none" >
+<suite name="TestSuite" parallel="classes" thread-count="2" >
 
     <test name="FirefoxTestCases">
         <parameter name="browser" value="firefox"/>
 
         <classes>
             <class name="com.romanceabroad.ui.RegistrationTests"/>
-
+            <class name="com.romanceabroad.ui.RegistrationTests2"/>
         </classes>
     </test>
 
@@ -18,7 +18,7 @@
 
         <classes>
             <class name="com.romanceabroad.ui.RegistrationTests"/>
-
+            <class name="com.romanceabroad.ui.RegistrationTests2"/>
 
 
         </classes>
@@ -28,7 +28,7 @@
 
     <classes>
         <class name="com.romanceabroad.ui.RegistrationTests"/>
-
+        <class name="com.romanceabroad.ui.RegistrationTests2"/>
 
     </classes>
     </test>
