@@ -11,8 +11,6 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.List;
 
-import static java.lang.Thread.sleep;
-
 public class BaseActions {
     protected WebDriver driver;
     protected WebDriverWait wait;
@@ -47,6 +45,7 @@ public class BaseActions {
         Select select = new Select(element);
         select.selectByValue(value);
     }
+
     public void getDropDownListByText(WebElement element, String text) {
         Select select = new Select(element);
         select.selectByVisibleText(text);
@@ -125,26 +124,31 @@ public class BaseActions {
     }
 
     public void clickUnselectedCheckbox(By checkbox) {
+        Reports.log("Create webelement for checkbox");
         WebElement currentCheckbox = driver.findElement(checkbox);
+        Reports.log("Click checkbox confirmation");
         if (!currentCheckbox.isSelected()) {
             ajaxClick(currentCheckbox);
         }
     }
 
     // Scrolls
-    public void scrollToBottomOfPage(){
+    public void scrollToBottomOfPage() {
         ((JavascriptExecutor)
                 driver).executeScript("window.scrollTo(0, document.body.scrollHeight);");
     }
-    public void ajaxScroll(WebElement element){
+
+    public void ajaxScroll(WebElement element) {
         ((JavascriptExecutor)
                 driver).executeScript("arguments[0].scrollIntoView(true);", element);
     }
+
     public void ajaxScroll(By by, int index) {
         wait.until(ExpectedConditions.presenceOfElementLocated(by));
         ajaxScroll(driver.findElements(by).get(index));
     }
-    public void ajaxScrollUp(){
+
+    public void ajaxScrollUp() {
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("window.scrollBy(0,-250)", "");
     }
@@ -228,20 +232,33 @@ public class BaseActions {
     }
 
     public void clickValueOfList(By locator, String text) {
+        Reports.log("Collect elements of list");
         List<WebElement> elements = driver.findElements(locator);
+
+        Reports.log("Start using loop with size of loop");
         for (int i = 0; i < elements.size(); i++) {
+
+            Reports.log("Create new webelement of list");
             WebElement elementOfList = elements.get(i);
+
+            Reports.log("Create new string with text from element of list ");
             String value = elementOfList.getText();
+            Reports.log("Value of list:" + value);
+
             if (value.contains(text)) {
+                Reports.log("Wait element list is clickable");
+                wait.until(ExpectedConditions.elementToBeClickable(elementOfList));
+
+                Reports.log("Click list of elements");
                 elementOfList.click();
             }
         }
     }
 
-    public String getAnyTitle(){
-   String title= driver.findElement(Locators.H1_TITLE).getText();
-   return title;
-}
+    public String getAnyTitle() {
+        String title = driver.findElement(Locators.H1_TITLE).getText();
+        return title;
+    }
 
 }
 

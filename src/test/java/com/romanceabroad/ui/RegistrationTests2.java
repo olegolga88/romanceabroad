@@ -1,4 +1,5 @@
 package com.romanceabroad.ui;
+
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -12,7 +13,7 @@ public class RegistrationTests2 extends BaseUI {
         mainPage.clickJoinButton();
         mainPage.completeFirstPartOfRegistration(email, Data.password);
         if (!requirement) {
-
+            Reports.log("Error massage is not displayed");
             Assert.assertTrue(driver.findElement(Locators.TOOLTIP_ERROR_MESSAGE_EMAIL).isDisplayed());
         } else {
             mainPage.clickNextButton();

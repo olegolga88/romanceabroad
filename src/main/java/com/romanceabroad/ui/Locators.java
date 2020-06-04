@@ -1,7 +1,7 @@
 package com.romanceabroad.ui;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
+
 
 public class Locators {
 public static final By H1_TITLE= By.xpath("//h1");
