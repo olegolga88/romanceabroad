@@ -15,5 +15,7 @@ public class BookTourTests extends BaseUI {
         //Assert.assertEquals(currentUrlBookNow, Data.expectedUrlBookNow);
 
     }
+    @Test 
 }
+
 
