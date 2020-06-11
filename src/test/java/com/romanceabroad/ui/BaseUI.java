@@ -1,5 +1,6 @@
 package com.romanceabroad.ui;
 
+
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -29,7 +30,7 @@ public class BaseUI {
     SoftAssert softAssert= new SoftAssert();
 
 
-    @BeforeMethod (groups = {"user","admin","ie"},alwaysRun = true)
+    @BeforeMethod(groups = {"user","admin","ie"},alwaysRun = true)
     @Parameters("browser")
     public void setup(@Optional("chrome") String browser, Method method) throws MalformedURLException {
         Reports.start(method.getDeclaringClass().getName() + " : " + method.getName());

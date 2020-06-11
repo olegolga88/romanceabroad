@@ -1,4 +1,5 @@
 package com.romanceabroad.ui;
+
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
@@ -6,6 +7,7 @@ import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
+
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -16,7 +18,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class Reports {
-    private  static final boolean jenkinsOption = false;
+    private  static final boolean jenkinsOption = true;
     public static ExtentHtmlReporter htmlReporter;
 
     public static ExtentReports extent;

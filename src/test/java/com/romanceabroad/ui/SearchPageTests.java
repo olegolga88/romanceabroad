@@ -1,6 +1,5 @@
 package com.romanceabroad.ui;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
@@ -70,8 +69,9 @@ public class SearchPageTests extends BaseUI {
         int sizeOfDropDownListSortBy = searchPage.getSizeDropDownList(Locators.DROP_DOWN_LIST_MIN_AGE);
         System.out.println(sizeOfDropDownListSortBy);
         for (int i = 0; i < sizeOfDropDownListSortBy; i++) {
-            searchPage.selectItemDropDownRandomOption((Locators.DROP_DOWN_LIST_MIN_AGE), "Min Age");
             mainPage.javaWaitSec(3);
+            searchPage.selectItemDropDownRandomOption((Locators.DROP_DOWN_LIST_MIN_AGE), "Min Age");
+
         }
     }
 

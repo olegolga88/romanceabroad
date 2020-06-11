@@ -1,6 +1,5 @@
 package com.romanceabroad.ui;
 
-import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class BookTourTests extends BaseUI {
@@ -15,7 +14,7 @@ public class BookTourTests extends BaseUI {
         //Assert.assertEquals(currentUrlBookNow, Data.expectedUrlBookNow);
 
     }
-    @Test 
+
 }
 
 

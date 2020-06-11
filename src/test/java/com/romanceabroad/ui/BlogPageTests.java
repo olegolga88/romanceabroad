@@ -20,6 +20,10 @@ String currentUrl;
 
 
     }
+    public static void main(String[] args) {
+        String input = "Geeks for Geeks";
+        BlogPage.reverseWordByStringBuilder(input);
+    }
 
     }
 

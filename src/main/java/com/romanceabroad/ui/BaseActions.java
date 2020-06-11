@@ -259,6 +259,19 @@ public class BaseActions {
         String title = driver.findElement(Locators.H1_TITLE).getText();
         return title;
     }
+//Algorithm for reverse word or phrase:
+    public static void reverseWordByStringBuilder(String input) {
+        StringBuilder input1 = new StringBuilder();
+
+        // append a string into StringBuilder input1
+        input1.append(input);
+
+        // reverse StringBuilder input1
+        input1 = input1.reverse();
+
+        // print reversed String
+        System.out.println(input1);
+    }
 
 }
 

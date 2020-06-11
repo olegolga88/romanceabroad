@@ -75,9 +75,13 @@ public class MainPage extends BaseActions {
         Reports.log("Clean auto filling form location");
         driver.findElement(Locators.AUTO_FILLING_FORM_LOCATION).clear();
 
-        Reports.log("Type city:" +city);
+        Reports.log("Type city:" + city);
         driver.findElement(Locators.AUTO_FILLING_FORM_LOCATION).sendKeys(city);
 
+        Reports.log("Wait list of locations");
+        wait.until(ExpectedConditions.presenceOfElementLocated(Locators.LIST_VALUE_LOCATION));
+
+        Reports.log("Click location:" + location);
         clickValueOfList(Locators.LIST_VALUE_LOCATION, location);
 
     }

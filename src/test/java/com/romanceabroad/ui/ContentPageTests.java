@@ -3,6 +3,7 @@ package com.romanceabroad.ui;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+
 import java.util.List;
 
 public class ContentPageTests extends BaseUI {
