@@ -1,21 +1,20 @@
 package com.romanceabroad.ui;
 
 
-import io.github.bonigarcia.wdm.WebDriverManager;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 import org.testng.asserts.SoftAssert;
 
 import java.lang.reflect.Method;
 import java.net.MalformedURLException;
+import java.net.URL;
 
 public class BaseUITestForSauceLabs {
     public WebDriver driver;
@@ -30,35 +29,27 @@ public class BaseUITestForSauceLabs {
     SoftAssert softAssert= new SoftAssert();
 
 
-    @BeforeMethod(groups = {"user","admin","ie"},alwaysRun = true)
-    @Parameters("browser")
-    public void setup(@Optional("chrome") String browser, Method method) throws MalformedURLException {
-        Reports.start(method.getDeclaringClass().getName() + " : " + method.getName());
-        // Check if parameter passed from TestNG is 'firefox'
-        if (browser.equalsIgnoreCase("firefox")) {
-            // Create firefox instance
-            WebDriverManager.firefoxdriver().setup();
-            driver = new FirefoxDriver();
-        }
-        // Check if parameter passed as 'chrome'
-        else if (browser.equalsIgnoreCase("chrome")) {
-            // Set path to chromedriver.exe
-            WebDriverManager.chromedriver().setup();
-            // Create chrome instance
-            driver = new ChromeDriver();
-            driver.get("chrome://settings/clearBrowserData");
-        } else if (browser.equalsIgnoreCase("IE")) {
-            WebDriverManager.iedriver().setup();
-            driver = new InternetExplorerDriver();
-            driver.manage().deleteAllCookies();
-        } else {
-            WebDriverManager.chromedriver().setup();
-            driver = new ChromeDriver();
-            driver.get("chrome://settings/clearBrowserData");
-        }
+    @BeforeMethod
+    @Parameters({"browser","version", "platform" })
+    public void setup(String browser, String version, String platform, Method method) throws MalformedURLException {
+        Reports.start(method.getName());
+
+        DesiredCapabilities capabilities = new DesiredCapabilities();
+        capabilities.setCapability("username","olegolga88");
+        capabilities.setCapability("accessKey","Key");
+        capabilities.setCapability("browserName", browser);
+        capabilities.setCapability("version", version);
+        capabilities.setCapability("platform", platform);
+        capabilities.setCapability("name", method.getName());
+        driver= new RemoteWebDriver(
+                new URL("http://" + System.getenv("SAUCE_USERNAME") +
+                        System.getenv("SAUCE_ACCESS_KEY") +
+                        "@ondemand.saucelabs.com:80/wd/hub"),capabilities);
 
 
-        System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
+
+
+
         wait= new WebDriverWait(driver,20);
         mainPage = new MainPage (driver,wait);
         searchPage = new SearchPage(driver,wait);
@@ -75,10 +66,15 @@ public class BaseUITestForSauceLabs {
     }
     @AfterMethod
     public void afterActions(ITestResult testResult) {
+        //Local reports
         if (testResult.getStatus() == ITestResult.FAILURE){
             Reports.fail(driver, testResult.getName());
         }
         Reports.stop();
+
+        //SauceLabs reports
+        ((JavascriptExecutor)driver).executeScript
+                ("sauce:job-result=" + (testResult.isSuccess() ? "passed" : "failed"));
         driver.quit();
 
     }
