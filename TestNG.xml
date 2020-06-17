@@ -1,7 +1,10 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 <suite name="TestSuite" parallel="none">
-    <!--<test name="IETestCases">
+   <!-- <test name="IETestCases">
+        <parameter name="testBox" value="local"/>
         <parameter name="browser" value="ie"/>
+        <parameter name="version" value="11.285"/>
+        <parameter name="platform" value="windows 10"/>
 
         <groups>
             <run>
@@ -30,7 +33,11 @@
         </classes>
     </test>
     <test name="FirefoxTestCases">
+        <parameter name="testBox" value="local"/>
         <parameter name="browser" value="firefox"/>
+        <parameter name="version" value="77.0"/>
+        <parameter name="platform" value="windows 10"/>
+
         <groups>
             <run>
                 <exclude name="ie"/>
@@ -48,11 +55,14 @@
             <class name="com.romanceabroad.ui.RegistrationTests"/>
             <class name="com.romanceabroad.ui.RegistrationTests2"/>
             <class name="com.romanceabroad.ui.SearchPageTests"/>
-            <class name="com.romanceabroad.ui.StorePageTests">
+            <class name="com.romanceabroad.ui.StorePageTests"/>
         </classes>
     </test>-->
     <test name="ChromeTestCases">
-        <parameter name="browser" value="chrome"/>
+        <parameter name="testBox" value="local "/>
+        <parameter name="browser" value="mobile"/>
+        <parameter name="version" value="83.0"/>
+        <parameter name="platform" value="windows 10"/>
 
         <!--<groups>
             <run>
@@ -67,12 +77,12 @@
             <class name="com.romanceabroad.ui.BlogPageTests"/>
             <class name="com.romanceabroad.ui.BookTourTests"/>
             <class name="com.romanceabroad.ui.ContentPageTests"/>
-            <class name="com.romanceabroad.ui.MainPage">-->
-            <class name="com.romanceabroad.ui.MediaPageTests"/>
-            <class name="com.romanceabroad.ui.RegistrationTests"/>
-            <class name="com.romanceabroad.ui.RegistrationTests2"/>
+            <class name="com.romanceabroad.ui.MainPage">
+            <class name="com.romanceabroad.ui.MediaPageTests"/>-->
+            <class name="com.romanceabroad.ui.RegistrationTests">
+            <!--<class name="com.romanceabroad.ui.RegistrationTests2"/>
             <class name="com.romanceabroad.ui.SearchPageTests"/>
-            <class name="com.romanceabroad.ui.StorePageTests">
+            <class name="com.romanceabroad.ui.StorePageTests">-->
             <!--<methods>
                 <include name=".*TestCase11.*"/>
                 <include name=".*Assert.*"/>
