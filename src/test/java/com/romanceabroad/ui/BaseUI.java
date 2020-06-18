@@ -37,102 +37,107 @@ public class BaseUI {
     protected TestBox testBox;
 
     protected enum TestBox {
-        LOCAL, SAUCE
+        WEB, MOBILE, SAUCE
     }
 
     @BeforeMethod(groups = {"user", "admin", "ie"}, alwaysRun = true)
-    @Parameters({"browser", "version", "platform", "testbox"})
-    public void setup(@Optional("chrome") String browser,@Optional("local") String box,
-                      @Optional("null") String version,
+    @Parameters({"browser", "testBox", "platform","version", "deviceName"})
+    public void setup(@Optional("chrome") String browser,
+                      @Optional("web") String box,
                       @Optional("null") String platform,
+                      @Optional("null") String version,
+                      @Optional("null") String device,
                       Method method) throws MalformedURLException {
         Reports.start(method.getDeclaringClass().getName() + " : " + method.getName());
-        if (box.equalsIgnoreCase("local")) {
-            testBox = TestBox.LOCAL;
+
+        if (box.equalsIgnoreCase("web")) {
+            testBox = TestBox.WEB;
+        } else if (box.equalsIgnoreCase("mobile")) {
+            testBox = TestBox.MOBILE;
         } else if (box.equalsIgnoreCase("sauce")) {
             testBox = TestBox.SAUCE;
-        }
-        switch (testBox) {
-            case LOCAL:
+            switch (testBox) {
+                case WEB:
 
-                // Check if parameter passed from TestNG is 'firefox'
-                if (browser.equalsIgnoreCase("firefox")) {
-                    // Create firefox instance
-                    WebDriverManager.firefoxdriver().setup();
-                    driver = new FirefoxDriver();
-                }
-                // Check if parameter passed as 'chrome'
-                else if (browser.equalsIgnoreCase("chrome")) {
-                    // Set path to chromedriver.exe
-                    WebDriverManager.chromedriver().setup();
-                    // Create chrome instance
-                    driver = new ChromeDriver();
-                    driver.get("chrome://settings/clearBrowserData");
+                    // Check if parameter passed from TestNG is 'firefox'
+                    if (browser.equalsIgnoreCase("firefox")) {
+                        // Create firefox instance
+                        WebDriverManager.firefoxdriver().setup();
+                        driver = new FirefoxDriver();
+                    }
+                    // Check if parameter passed as 'chrome'
+                    else if (browser.equalsIgnoreCase("chrome")) {
+                        // Set path to chromedriver.exe
+                        WebDriverManager.chromedriver().setup();
+                        // Create chrome instance
+                        driver = new ChromeDriver();
+                        driver.get("chrome://settings/clearBrowserData");
 
-                } else if (browser.equalsIgnoreCase("mobile")) {
+                    } else if (browser.equalsIgnoreCase("IE")) {
+                        WebDriverManager.iedriver().setup();
+                        driver = new InternetExplorerDriver();
+                        driver.manage().deleteAllCookies();
+
+                    } else {
+                        WebDriverManager.chromedriver().setup();
+                        driver = new ChromeDriver();
+                        driver.get("chrome://settings/clearBrowserData");
+                    }
+                    break;
+
+                case MOBILE:
                     System.out.println("Mobile Chrome");
                     Map<String, String> mobileEmulation = new HashMap<String, String>();
                     mobileEmulation.put("deviceName", "Galaxy S5");
                     ChromeOptions chromeOptions = new ChromeOptions();
                     chromeOptions.setExperimentalOption("mobileEmulation", mobileEmulation);
-
                     WebDriverManager.chromedriver().setup();
                     driver = new ChromeDriver(chromeOptions);
                     driver.get("chrome://settings/clearBrowserData");
+                    break;
 
-                } else if (browser.equalsIgnoreCase("IE")) {
-                    WebDriverManager.iedriver().setup();
-                    driver = new InternetExplorerDriver();
-                    driver.manage().deleteAllCookies();
+                case SAUCE:
+                    DesiredCapabilities capabilities = new DesiredCapabilities();
+                    capabilities.setCapability("username", "olegolga88");
+                    capabilities.setCapability("accessKey", "Key");
+                    capabilities.setCapability("browserName", browser);
+                    capabilities.setCapability("version", version);
+                    capabilities.setCapability("platform", platform);
+                    capabilities.setCapability("name", method.getName());
+                    driver = new RemoteWebDriver(
+                            new URL("http://" + System.getenv("SAUCE_USERNAME") +
+                                    System.getenv("SAUCE_ACCESS_KEY") +
+                                    "@ondemand.saucelabs.com:80/wd/hub"), capabilities);
+                    break;
 
-                } else {
-                    WebDriverManager.chromedriver().setup();
-                    driver = new ChromeDriver();
-                    driver.get("chrome://settings/clearBrowserData");
-                }
-                break;
-            case SAUCE:
-                DesiredCapabilities capabilities = new DesiredCapabilities();
-                capabilities.setCapability("username", "olegolga88");
-                capabilities.setCapability("accessKey", "Key");
-                capabilities.setCapability("browserName", browser);
-                capabilities.setCapability("version", version);
-                capabilities.setCapability("platform", platform);
-                capabilities.setCapability("name", method.getName());
-                driver = new RemoteWebDriver(
-                        new URL("http://" + System.getenv("SAUCE_USERNAME") +
-                                System.getenv("SAUCE_ACCESS_KEY") +
-                                "@ondemand.saucelabs.com:80/wd/hub"), capabilities);
-                break;
+            }
+
+
+            System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
+            wait = new WebDriverWait(driver, 20);
+            mainPage = new MainPage(driver, wait);
+            searchPage = new SearchPage(driver, wait);
+            blogPage = new BlogPage(driver, wait);
+            bookTourPage = new BookTourPage(driver, wait);
+            storePage = new StorePage(driver, wait);
+            contentPage = new ContentPage(driver, wait);
+            mediaPage = new MediaPage(driver, wait);
+
+            driver.manage().window().maximize();
+            driver.get(Data.mainUrl);
+
+
+        }}
+
+        @AfterMethod
+        public void afterActions (ITestResult testResult){
+            if (testResult.getStatus() == ITestResult.FAILURE) {
+                Reports.fail(driver, testResult.getName());
+            }
+            Reports.stop();
+            driver.quit();
 
         }
 
 
-        System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
-        wait = new WebDriverWait(driver, 20);
-        mainPage = new MainPage(driver, wait);
-        searchPage = new SearchPage(driver, wait);
-        blogPage = new BlogPage(driver, wait);
-        bookTourPage = new BookTourPage(driver, wait);
-        storePage = new StorePage(driver, wait);
-        contentPage = new ContentPage(driver, wait);
-        mediaPage = new MediaPage(driver, wait);
-
-        driver.manage().window().maximize();
-        driver.get(Data.mainUrl);
-
-
     }
-
-    @AfterMethod
-    public void afterActions(ITestResult testResult) {
-        if (testResult.getStatus() == ITestResult.FAILURE) {
-            Reports.fail(driver, testResult.getName());
-        }
-        Reports.stop();
-        driver.quit();
-
-    }
-
-
-}

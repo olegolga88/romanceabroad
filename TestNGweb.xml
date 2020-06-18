@@ -1,5 +1,5 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
-<suite name="TestSuite" parallel="none">
+<suite name="Web Test Suite" parallel="none">
    <!-- <test name="IETestCases">
         <parameter name="testBox" value="local"/>
         <parameter name="browser" value="ie"/>
@@ -59,11 +59,11 @@
         </classes>
     </test>-->
     <test name="ChromeTestCases">
-        <parameter name="testBox" value="local "/>
+
         <parameter name="browser" value="mobile"/>
         <parameter name="version" value="83.0"/>
         <parameter name="platform" value="windows 10"/>
-
+        <parameter name="testBox" value="web"/>
         <!--<groups>
             <run>
                 <exclude name="ie"/>
