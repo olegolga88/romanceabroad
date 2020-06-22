@@ -19,7 +19,7 @@ public class RegistrationTests extends BaseUI {
         mainPage.clickNextButton();
         mainPage.completeSecondPartOfRegistration(mainPage.generateNewNumber(Data.nickname, 5), day,
                 month, year, phone, city, location);
-        mainPage.javaWaitSec(3);
+        mainPage.javaWaitSec(5);
         mainPage.clickUnselectedCheckbox(Locators.CHECK_BOX_CONFIRMATION);
 
         /*WebElement checkboxConfirmation= driver.findElement(com.romanceabroad.ui.Locators.CHECK_BOX_CONFIRMATION);

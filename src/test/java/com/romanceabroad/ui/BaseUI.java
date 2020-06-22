@@ -35,13 +35,18 @@ public class BaseUI {
     StorePage storePage;
     SoftAssert softAssert = new SoftAssert();
     protected TestBox testBox;
+    protected TestBrowser testBrowser;
 
     protected enum TestBox {
         WEB, MOBILE, SAUCE
     }
 
+    protected enum TestBrowser {
+        CHROME, FIREFOX, IE
+    }
+
     @BeforeMethod(groups = {"user", "admin", "ie"}, alwaysRun = true)
-    @Parameters({"browser", "testBox", "platform","version", "deviceName"})
+    @Parameters({"browser", "testBox", "platform", "version", "deviceName"})
     public void setup(@Optional("chrome") String browser,
                       @Optional("web") String box,
                       @Optional("null") String platform,
@@ -56,36 +61,49 @@ public class BaseUI {
             testBox = TestBox.MOBILE;
         } else if (box.equalsIgnoreCase("sauce")) {
             testBox = TestBox.SAUCE;
-            switch (testBox) {
-                case WEB:
+        }
+        if (browser.equalsIgnoreCase("chrome")) {
+            testBrowser = TestBrowser.CHROME;
+        } else if (browser.equalsIgnoreCase("firefox")) {
+            testBrowser = TestBrowser.FIREFOX;
+        } else if (browser.equalsIgnoreCase("ie")) {
+            testBrowser = TestBrowser.IE;
+        }
 
-                    // Check if parameter passed from TestNG is 'firefox'
-                    if (browser.equalsIgnoreCase("firefox")) {
-                        // Create firefox instance
+        switch (testBox) {
+            case WEB:
+                switch (testBrowser) {
+                    case FIREFOX:
                         WebDriverManager.firefoxdriver().setup();
                         driver = new FirefoxDriver();
-                    }
-                    // Check if parameter passed as 'chrome'
-                    else if (browser.equalsIgnoreCase("chrome")) {
-                        // Set path to chromedriver.exe
+                        break;
+
+                    case CHROME:
                         WebDriverManager.chromedriver().setup();
-                        // Create chrome instance
                         driver = new ChromeDriver();
                         driver.get("chrome://settings/clearBrowserData");
+                        break;
 
-                    } else if (browser.equalsIgnoreCase("IE")) {
+                    case IE:
                         WebDriverManager.iedriver().setup();
                         driver = new InternetExplorerDriver();
                         driver.manage().deleteAllCookies();
+                        break;
 
-                    } else {
+                    default:
                         WebDriverManager.chromedriver().setup();
                         driver = new ChromeDriver();
                         driver.get("chrome://settings/clearBrowserData");
-                    }
-                    break;
+                        break;
+                }
 
-                case MOBILE:
+
+                break;
+
+            case MOBILE:
+                switch (testBrowser) {
+
+                    case CHROME:
                     System.out.println("Mobile Chrome");
                     Map<String, String> mobileEmulation = new HashMap<String, String>();
                     mobileEmulation.put("deviceName", "Galaxy S5");
@@ -95,49 +113,49 @@ public class BaseUI {
                     driver = new ChromeDriver(chromeOptions);
                     driver.get("chrome://settings/clearBrowserData");
                     break;
-
-                case SAUCE:
-                    DesiredCapabilities capabilities = new DesiredCapabilities();
-                    capabilities.setCapability("username", "olegolga88");
-                    capabilities.setCapability("accessKey", "Key");
-                    capabilities.setCapability("browserName", browser);
-                    capabilities.setCapability("version", version);
-                    capabilities.setCapability("platform", platform);
-                    capabilities.setCapability("name", method.getName());
-                    driver = new RemoteWebDriver(
-                            new URL("http://" + System.getenv("SAUCE_USERNAME") +
-                                    System.getenv("SAUCE_ACCESS_KEY") +
-                                    "@ondemand.saucelabs.com:80/wd/hub"), capabilities);
-                    break;
-
-            }
-
-
-            System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
-            wait = new WebDriverWait(driver, 20);
-            mainPage = new MainPage(driver, wait);
-            searchPage = new SearchPage(driver, wait);
-            blogPage = new BlogPage(driver, wait);
-            bookTourPage = new BookTourPage(driver, wait);
-            storePage = new StorePage(driver, wait);
-            contentPage = new ContentPage(driver, wait);
-            mediaPage = new MediaPage(driver, wait);
-
-            driver.manage().window().maximize();
-            driver.get(Data.mainUrl);
-
-
-        }}
-
-        @AfterMethod
-        public void afterActions (ITestResult testResult){
-            if (testResult.getStatus() == ITestResult.FAILURE) {
-                Reports.fail(driver, testResult.getName());
-            }
-            Reports.stop();
-            driver.quit();
+                }
+                break;
+            case SAUCE:
+                DesiredCapabilities capabilities = new DesiredCapabilities();
+                capabilities.setCapability("username", "olegolga88");
+                capabilities.setCapability("accessKey", "Key");
+                capabilities.setCapability("browserName", browser);
+                capabilities.setCapability("version", version);
+                capabilities.setCapability("platform", platform);
+                capabilities.setCapability("name", method.getName());
+                driver = new RemoteWebDriver(
+                        new URL("http://" + System.getenv("SAUCE_USERNAME") +
+                                System.getenv("SAUCE_ACCESS_KEY") +
+                                "@ondemand.saucelabs.com:80/wd/hub"), capabilities);
+                break;
 
         }
 
 
+        System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
+        wait = new WebDriverWait(driver, 20);
+        mainPage = new MainPage(driver, wait);
+        searchPage = new SearchPage(driver, wait);
+        blogPage = new BlogPage(driver, wait);
+        bookTourPage = new BookTourPage(driver, wait);
+        storePage = new StorePage(driver, wait);
+        contentPage = new ContentPage(driver, wait);
+        mediaPage = new MediaPage(driver, wait);
+        driver.manage().window().maximize();
+        driver.get(Data.mainUrl);
+
+
     }
+
+    @AfterMethod
+    public void afterActions(ITestResult testResult) {
+        if (testResult.getStatus() == ITestResult.FAILURE) {
+            Reports.fail(driver, testResult.getName());
+        }
+        Reports.stop();
+        driver.quit();
+
+    }
+
+
+}

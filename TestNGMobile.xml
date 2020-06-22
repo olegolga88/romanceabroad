@@ -3,8 +3,8 @@
 
 
     <test name="Galaxy S5 test cases">
-        <parameter name="testBox" value="mobile"/>
         <parameter name="browser" value="chrome"/>
+        <parameter name="testBox" value="mobile"/>
         <parameter name="deviceName" value="Galaxy S5"/>
 
 
@@ -23,4 +23,64 @@
             </class>
         </classes>
     </test>
+
+    <test name="iPhone 6/7/8 Plus test cases">
+    <parameter name="browser" value="chrome"/>
+    <parameter name="testBox" value="mobile"/>
+    <parameter name="deviceName" value="iPhone 6/7/8 Plus"/>
+        <classes>
+            <!--<class name="com.romanceabroad.ui.SearchPageTests"/>
+            <class name="com.romanceabroad.ui.BlogPageTests"/>
+            <class name="com.romanceabroad.ui.BookTourTests"/>
+            <class name="com.romanceabroad.ui.ContentPageTests"/>
+            <class name="com.romanceabroad.ui.MainPage">
+            <class name="com.romanceabroad.ui.MediaPageTests"/>-->
+            <class name="com.romanceabroad.ui.RegistrationTests">
+                <!--<class name="com.romanceabroad.ui.RegistrationTests2"/>
+                <class name="com.romanceabroad.ui.SearchPageTests"/>
+                <class name="com.romanceabroad.ui.StorePageTests">-->
+
+            </class>
+        </classes>
+    </test>
+    <test name="iPhone X test cases">
+        <parameter name="browser" value="chrome"/>
+        <parameter name="testBox" value="mobile"/>
+        <parameter name="deviceName" value="iPhone X"/>
+        <classes>
+            <!--<class name="com.romanceabroad.ui.SearchPageTests"/>
+            <class name="com.romanceabroad.ui.BlogPageTests"/>
+            <class name="com.romanceabroad.ui.BookTourTests"/>
+            <class name="com.romanceabroad.ui.ContentPageTests"/>
+            <class name="com.romanceabroad.ui.MainPage">
+            <class name="com.romanceabroad.ui.MediaPageTests"/>-->
+            <class name="com.romanceabroad.ui.RegistrationTests">
+                <!--<class name="com.romanceabroad.ui.RegistrationTests2"/>
+                <class name="com.romanceabroad.ui.SearchPageTests"/>
+                <class name="com.romanceabroad.ui.StorePageTests">-->
+
+            </class>
+        </classes>
+    </test>
+
+    <test name="Galaxy Note 3 test cases">
+        <parameter name="browser" value="chrome"/>
+        <parameter name="testBox" value="mobile"/>
+        <parameter name="deviceName" value="Galaxy Note 3"/>
+        <classes>
+            <!--<class name="com.romanceabroad.ui.SearchPageTests"/>
+            <class name="com.romanceabroad.ui.BlogPageTests"/>
+            <class name="com.romanceabroad.ui.BookTourTests"/>
+            <class name="com.romanceabroad.ui.ContentPageTests"/>
+            <class name="com.romanceabroad.ui.MainPage">
+            <class name="com.romanceabroad.ui.MediaPageTests"/>-->
+            <class name="com.romanceabroad.ui.RegistrationTests">
+                <!--<class name="com.romanceabroad.ui.RegistrationTests2"/>
+                <class name="com.romanceabroad.ui.SearchPageTests"/>
+                <class name="com.romanceabroad.ui.StorePageTests">-->
+
+            </class>
+        </classes>
+    </test>
+
 </suite>
