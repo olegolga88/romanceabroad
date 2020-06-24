@@ -67,9 +67,11 @@ public static final By FLATTY_BLOCK_ALBUMS_MEDIA = By.xpath("//div[@class='g-fla
     public static final By BUTTON_HELP_FOOTER_SEARCH_PAGE = By.xpath("//footer//div//div[@data-id='footer-menu-title-0']");
     public static final By BUTTON_ABOUT_FOOTER_SEARCH_PAGE = By.xpath("//footer//div//div[@data-id='footer-menu-title-1']");
     public static final By INFO_ABOUT_USER = By.xpath("//div[@class='text-overflow']");
+    public static final By MOBILE_SEARCH_PARAMETERS = By.xpath("//div[@class='search-param-button mb10']//a");
 
 
     //Main Page
+    public static final By MOBILE_MENU = By.xpath("//span[@class='navbar-toggler-icon']");
     public static final By VIDEO_FIELD = By.xpath("//iframe[@src='https://www.youtube.com/embed/RRECuJzm3IY?start=85']");
     public static final By VIDEO_BUTTON = By.xpath("//button[@class='ytp-large-play-button ytp-button']");
     public static final By LIST_OF_BUTTONS = By.xpath("//ul[@class='navbar-nav']//li/a");

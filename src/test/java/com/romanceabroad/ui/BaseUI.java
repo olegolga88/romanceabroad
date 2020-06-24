@@ -37,6 +37,8 @@ public class BaseUI {
     protected TestBox testBox;
     protected TestBrowser testBrowser;
 
+    protected String valueOfBox;
+
     protected enum TestBox {
         WEB, MOBILE, SAUCE
     }
@@ -46,12 +48,13 @@ public class BaseUI {
     }
 
     @BeforeMethod(groups = {"user", "admin", "ie"}, alwaysRun = true)
-    @Parameters({"browser", "testBox", "platform", "version", "deviceName"})
+    @Parameters({"browser", "testBox", "platform", "version", "deviceName", "testEnv"})
     public void setup(@Optional("chrome") String browser,
                       @Optional("web") String box,
                       @Optional("null") String platform,
                       @Optional("null") String version,
                       @Optional("null") String device,
+                      @Optional("qa") String env,
                       Method method) throws MalformedURLException {
         Reports.start(method.getDeclaringClass().getName() + " : " + method.getName());
 
@@ -97,22 +100,22 @@ public class BaseUI {
                         break;
                 }
 
-
+                driver.manage().window().maximize();
                 break;
 
             case MOBILE:
                 switch (testBrowser) {
 
                     case CHROME:
-                    System.out.println("Mobile Chrome");
-                    Map<String, String> mobileEmulation = new HashMap<String, String>();
-                    mobileEmulation.put("deviceName", "Galaxy S5");
-                    ChromeOptions chromeOptions = new ChromeOptions();
-                    chromeOptions.setExperimentalOption("mobileEmulation", mobileEmulation);
-                    WebDriverManager.chromedriver().setup();
-                    driver = new ChromeDriver(chromeOptions);
-                    driver.get("chrome://settings/clearBrowserData");
-                    break;
+                        System.out.println("Mobile Chrome");
+                        Map<String, String> mobileEmulation = new HashMap<String, String>();
+                        mobileEmulation.put("deviceName", "Galaxy Note 3");
+                        ChromeOptions chromeOptions = new ChromeOptions();
+                        chromeOptions.setExperimentalOption("mobileEmulation", mobileEmulation);
+                        WebDriverManager.chromedriver().setup();
+                        driver = new ChromeDriver(chromeOptions);
+                        driver.get("chrome://settings/clearBrowserData");
+                        break;
                 }
                 break;
             case SAUCE:
@@ -141,9 +144,16 @@ public class BaseUI {
         storePage = new StorePage(driver, wait);
         contentPage = new ContentPage(driver, wait);
         mediaPage = new MediaPage(driver, wait);
-        driver.manage().window().maximize();
-        driver.get(Data.mainUrl);
+        //driver.manage().window().maximize();
 
+        if (env.contains("qa")) {
+            driver.get(Data.mainUrl);
+        } else if (env.contains("uat")) {
+            driver.get("https://www.google.com/");
+        } else if (env.contains("prod")) {
+            driver.get("https://www.yahoo.com/");
+        }
+        valueOfBox = box;
 
     }
 
@@ -153,7 +163,7 @@ public class BaseUI {
             Reports.fail(driver, testResult.getName());
         }
         Reports.stop();
-        driver.quit();
+        //driver.quit();
 
     }
 

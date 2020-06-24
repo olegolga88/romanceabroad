@@ -13,12 +13,12 @@ import static com.romanceabroad.ui.Locators.DROP_DOWN_LIST_MAX_AGE;
 
 public class SearchPageTests extends BaseUI {
 
-    public static final boolean testCase11 = true;
-    public static final boolean testCase12 = true;
-    public static final boolean testCase13 = true;
+    public static final boolean testCase11 = false;
+    public static final boolean testCase12 = false;
+    public static final boolean testCase13 = false;
     public static final boolean testCase14 = true;
-    public static final boolean testCase15 = true;
-    public static final boolean testCase16 = true;
+    public static final boolean testCase15 = false;
+    public static final boolean testCase16 = false;
     String currentUrlSearch;
 
     @Test(priority = 1, enabled = testCase11, groups = {"admin", "user"})
@@ -42,6 +42,7 @@ public class SearchPageTests extends BaseUI {
 
     @Test(priority = 2, enabled = testCase12, groups = {"admin", "user"})
     public void selectRandomDropDownListTestCase12() {
+        mainPage.clickMobileMenu3();
         searchPage.clickLinkSearch();
         for (int i = 0; i < 10; i++) {
             searchPage.selectItemDropDownRandomOption(Locators.DROP_DOWN_LIST_SORT_BY, "Sort By");
@@ -64,10 +65,12 @@ public class SearchPageTests extends BaseUI {
 
     @Test(priority = 4, enabled = testCase14, groups = {"admin", "user"})
     public void sizeOfDropDownListMinAgeTestCase14() {
+        mainPage.clickMobileMenu(valueOfBox);
         searchPage.clickLinkSearch();
         driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
         int sizeOfDropDownListSortBy = searchPage.getSizeDropDownList(Locators.DROP_DOWN_LIST_MIN_AGE);
         System.out.println(sizeOfDropDownListSortBy);
+        searchPage.clickSearchParameters(valueOfBox);
         for (int i = 0; i < sizeOfDropDownListSortBy; i++) {
             mainPage.javaWaitSec(3);
             searchPage.selectItemDropDownRandomOption((Locators.DROP_DOWN_LIST_MIN_AGE), "Min Age");

@@ -14,10 +14,22 @@ public class SearchPage extends BaseActions {
         driver.findElement(Locators.LINK_SEARCH).click();
 
     }
-    public void clickButtonSearch(){
+
+    public void clickButtonSearch() {
 
         driver.findElement(Locators.BUTTON_SEARCH).click();
     }
 
 
+
+    public void clickSearchParameters(String valueOfBox) {
+        if (valueOfBox.contains("mobile")) {
+            driver.findElement(Locators.MOBILE_SEARCH_PARAMETERS).click();
+        }
+    }
+
+
+
 }
+
+

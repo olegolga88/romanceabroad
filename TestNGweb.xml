@@ -1,52 +1,21 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 <suite name="Web Test Suite" parallel="none">
-    <test name="IETestCases">
-        <parameter name="testBox" value="web"/>
-        <parameter name="browser" value="ie"/>
-        <parameter name="version" value="11.285"/>
-        <parameter name="platform" value="windows 10"/>
 
-        <!--<groups>
-            <run>
-                <exclude name="ie"/>
-                <include name="admin"/>
-                <include name="user"/>
-            </run>
-        </groups>-->
-        <classes>
-            <!--<class name="com.romanceabroad.ui.SearchPageTests"/>
-            <class name="com.romanceabroad.ui.BlogPageTests"/>
-            <class name="com.romanceabroad.ui.BookTourTests"/>
-            <class name="com.romanceabroad.ui.ContentPageTests"/>
-            <class name="com.romanceabroad.ui.MainPage"/>
-            <class name="com.romanceabroad.ui.MediaPageTests"/>
-            <class name="com.romanceabroad.ui.RegistrationTests2"/>
-            <class name="com.romanceabroad.ui.SearchPageTests"/>
-            <class name="com.romanceabroad.ui.StorePageTests"/>-->
-            <class name="com.romanceabroad.ui.RegistrationTests">
-                <!--<methods>
-                    <include name=".*TestCase11.*"/>
-                    <include name=".*Assert.*"/>
-                    <exclude name=".*List.*"/>
-                </methods>-->
-            </class>
-        </classes>
-    </test>
-    <test name="FirefoxTestCases">
+    <!--<test name="FirefoxTestCases">
         <parameter name="testBox" value="web"/>
         <parameter name="browser" value="firefox"/>
         <parameter name="version" value="77.0"/>
         <parameter name="platform" value="windows 10"/>
 
-       <!-- <groups>
+        <groups>
             <run>
                 <exclude name="ie"/>
                 <include name="admin"/>
                 <include name="user"/>
             </run>
-        </groups>-->
+        </groups>
         <classes>
-           <!-- <class name="com.romanceabroad.ui.SearchPageTests"/>
+           &lt;!&ndash; <class name="com.romanceabroad.ui.SearchPageTests"/>
             <class name="com.romanceabroad.ui.BlogPageTests"/>
             <class name="com.romanceabroad.ui.BookTourTests"/>
             <class name="com.romanceabroad.ui.ContentPageTests"/>
@@ -54,13 +23,14 @@
             <class name="com.romanceabroad.ui.RegistrationTests2"/>
             <class name="com.romanceabroad.ui.SearchPageTests"/>
             <class name="com.romanceabroad.ui.StorePageTests"/>
-            <class name="com.romanceabroad.ui.MediaPageTests"/>-->
+            <class name="com.romanceabroad.ui.MediaPageTests"/>&ndash;&gt;
             <class name="com.romanceabroad.ui.RegistrationTests"/>
         </classes>
     </test>
-
+-->
     <test name="ChromeTestCases">
 
+        <parameter name="testEnv" value="prod"/>
         <parameter name="browser" value="chrome"/>
         <parameter name="version" value="83.0"/>
         <parameter name="platform" value="windows 10"/>
@@ -74,7 +44,7 @@
         </groups>-->
 
         <classes>
-            
+
             <!--<class name="com.romanceabroad.ui.SearchPageTests"/>
             <class name="com.romanceabroad.ui.BlogPageTests"/>
             <class name="com.romanceabroad.ui.BookTourTests"/>
