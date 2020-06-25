@@ -1,12 +1,24 @@
 package com.romanceabroad.ui;
 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.concurrent.TimeUnit;
 
 public class MainPage extends BaseActions {
+
+    @FindBy(xpath = "//button[@id='show-registration-block']")
+    WebElement registrationButton;
+
+    @FindBy(xpath = "//input[@id='email']")
+    WebElement textFieldEmail;
+
+    @FindBy(xpath = "//input[@id='password']")
+    WebElement textFieldPassword;
+
     public MainPage(WebDriver driver, WebDriverWait wait) {
         super(driver, wait);
     }
@@ -14,7 +26,7 @@ public class MainPage extends BaseActions {
     public void clickJoinButton() {
 
         Reports.log("click Join Button");
-        driver.findElement(Locators.BUTTON_REGISTRATION).click();
+        registrationButton.click();
 
     }
 
@@ -23,16 +35,16 @@ public class MainPage extends BaseActions {
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 
         Reports.log("Wait Text Field Email");
-        wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(Locators.TEXT_FIELD_EMAIL)));
+        wait.until(ExpectedConditions.elementToBeClickable(textFieldEmail));
 
         Reports.log("Type Email in Text Field:" + email);
-        driver.findElement(Locators.TEXT_FIELD_EMAIL).sendKeys(email);
+        textFieldEmail.sendKeys(email);
 
         Reports.log("Wait Text Field Password");
-        wait.until(ExpectedConditions.visibilityOf(driver.findElement(Locators.TEXT_FIELD_PASSWORD)));
+        wait.until(ExpectedConditions.visibilityOf(textFieldPassword));
 
         Reports.log("Type password in Text Field:" + password);
-        driver.findElement(Locators.TEXT_FIELD_PASSWORD).sendKeys(password);
+        textFieldPassword.sendKeys(password);
 
 
     }
@@ -79,7 +91,7 @@ public class MainPage extends BaseActions {
         driver.findElement(Locators.AUTO_FILLING_FORM_LOCATION).sendKeys(city);
 
         Reports.log("Wait list of locations");
-        wait.until(ExpectedConditions.presenceOfElementLocated(Locators.LIST_VALUE_LOCATION));
+        wait.until(ExpectedConditions.elementToBeClickable(Locators.LIST_VALUE_LOCATION));
 
         Reports.log("Click location:" + location);
         clickValueOfList(Locators.LIST_VALUE_LOCATION, location);

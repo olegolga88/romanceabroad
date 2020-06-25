@@ -30,7 +30,7 @@
 -->
     <test name="ChromeTestCases">
 
-        <parameter name="testEnv" value="prod"/>
+        <parameter name="testEnv" value="qa"/>
         <parameter name="browser" value="chrome"/>
         <parameter name="version" value="83.0"/>
         <parameter name="platform" value="windows 10"/>
