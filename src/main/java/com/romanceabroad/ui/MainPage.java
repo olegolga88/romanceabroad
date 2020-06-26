@@ -98,11 +98,7 @@ public class MainPage extends BaseActions {
 
     }
 
-    public void clickSignInButton() {
-        wait.until(ExpectedConditions.elementToBeClickable(Locators.BUTTON_SIGN_IN_MAIN_PAGE));
-        driver.findElement(Locators.BUTTON_SIGN_IN_MAIN_PAGE).click();
 
-    }
 
     public void inputDataSignIn(String email, String password) {
         wait.until(ExpectedConditions.presenceOfElementLocated(Locators.TEXT_FIELD_EMAIL_SIGN_IN));
@@ -128,11 +124,19 @@ public class MainPage extends BaseActions {
         if (driver.findElement(Locators.MOBILE_MENU).isDisplayed()){
             driver.findElement(Locators.MOBILE_MENU).click();
         }
-    }public void clickMobileMenu3() {
+    }
+
+    public void clickMobileMenu3() {
         if (driver.findElements(Locators.MOBILE_MENU).size()>0){
             driver.findElement(Locators.MOBILE_MENU).click();
         }
     }
+
+    public void clickSignInLink(){
+        wait.until(ExpectedConditions.elementToBeClickable(Locators.LINK_SIGN_IN_MAIN_PAGE));
+        driver.findElement(Locators.LINK_SIGN_IN_MAIN_PAGE).click();
+    }
+
 }
 
 

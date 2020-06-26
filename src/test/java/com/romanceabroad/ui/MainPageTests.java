@@ -109,7 +109,7 @@ public class MainPageTests extends BaseUI {
 
     @Test(dataProvider = "SignIn", dataProviderClass = DataProviders.class)
     public void testSignInNegative(String email, String password, boolean requirement) {
-        mainPage.clickSignInButton();
+        mainPage.clickSignInLink();
         mainPage.inputDataSignIn(email, password);
         driver.getCurrentUrl();
         if (!requirement) {

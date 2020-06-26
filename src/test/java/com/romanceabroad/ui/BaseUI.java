@@ -187,7 +187,7 @@ public class BaseUI {
             Reports.fail(driver, testResult.getName());
         }
         Reports.stop();
-        //driver.quit();
+        driver.quit();
 
     }
 

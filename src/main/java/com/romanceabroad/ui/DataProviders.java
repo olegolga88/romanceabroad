@@ -50,12 +50,39 @@ public class DataProviders {
     }
 
 
-    @DataProvider(name ="SignIn")
+    @DataProvider(name = "SignIn")
     public static Object[][] testSignInNegative() {
         return new Object[][]{
                 {Data.email1, Data.password, true},
-                {Data.email2, Data.password, false},
+                {Data.email2, Data.password, false}
+        };
+    }
+
+    @DataProvider(name = "NewRequirementsForPassword")
+    public static Object[][] newRequirementsForPassword() {
+        return new Object[][]{
+                {"Boston1!", true},
+                {"Boston2@", true},
+                {"#Boston3", true},
+                {"$Bos4ton", true},
+                {"Bos%ton5", true},
+                {"Bos^6ton", true},
+                {"New York&7", true},
+                {"Miami*8", true},
+                {"Miami-13", true},
+                {"Miami.,90", true},
+                {"FLORIDA", false},
+                {"***", false},
+                {"23232323", false},
+                {"nevermind", false},
+                {"Fa1234%", false}, //less then 8 char.
+                {"Nectar!!", false}, // no digits
+                {"Arizona1", false}, // no special character
+                {"GLORYA$1", false}, //no lower case
+                {"flower1@", false}, //no upper case
+                {"Polock12", false}, //no special char.
 
         };
+
     }
 }
